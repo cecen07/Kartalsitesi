@@ -289,6 +289,49 @@ select.fc option{background:var(--s3)}
 .bfmt{background:var(--s3);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:.73rem;cursor:pointer;transition:all .15s;color:var(--t2)}
 .bfmt.active,.bfmt:hover{border-color:var(--accent);color:var(--accent)}
 
+/* ── İCRAATLAR ── */
+.ic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:4px}
+.ic-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .18s,box-shadow .18s}
+.ic-card:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.ic-img{width:100%;height:170px;object-fit:cover;display:block;background:var(--s3);cursor:pointer}
+.ic-img-ph{width:100%;height:170px;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--t3)}
+.ic-body{padding:14px}
+.ic-title{font-weight:700;font-size:.92rem;margin-bottom:4px}
+.ic-meta{font-size:.7rem;color:var(--t3);display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ic-desc{font-size:.78rem;color:var(--t2);line-height:1.5}
+.ic-cat{display:inline-block;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:20px;background:rgba(79,142,247,.15);color:var(--accent);margin-bottom:6px}
+.ic-fatura{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.ic-ftag{display:inline-flex;align-items:center;gap:3px;font-size:.65rem;background:var(--s3);border:1px solid var(--border);border-radius:6px;padding:3px 8px;cursor:pointer;color:var(--t2)}
+.ic-ftag:hover{border-color:var(--accent);color:var(--accent)}
+/* ── MESAJLAR ── */
+.msg-list{display:flex;flex-direction:column;gap:10px}
+.msg-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--rs);padding:14px}
+.msg-card.unread{border-color:var(--accent)}
+.msg-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
+.msg-from{font-weight:700;font-size:.82rem}
+.msg-date{font-size:.68rem;color:var(--t3)}
+.msg-text{font-size:.8rem;color:var(--t2);line-height:1.5;white-space:pre-wrap}
+.msg-reply{margin-top:8px;background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.2);border-radius:var(--rs);padding:10px;font-size:.76rem;color:var(--t2)}
+.msg-reply-hdr{font-size:.65rem;font-weight:700;color:var(--accent);margin-bottom:4px}
+.msg-badge{background:var(--accent);color:#fff;font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:20px;vertical-align:middle}
+/* ── FAZLALIK ── */
+.faz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.faz-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--rs);padding:14px}
+.faz-uid{font-weight:700;font-size:.85rem;color:var(--accent)}
+.faz-amt{font-size:1.3rem;font-weight:700;color:var(--green);margin:4px 0}
+.faz-note{font-size:.72rem;color:var(--t3)}
+/* ── GELİR GİDER FATURA ── */
+.gg-fatura-thumb{width:38px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border);cursor:pointer;vertical-align:middle}
+.gg-fatura-ph{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:6px;border:1px dashed var(--border);font-size:1.1rem;cursor:pointer;vertical-align:middle;color:var(--t3)}
+/* ── RESİM ÖNIZLEME MODAL ── */
+#mo-img-preview .md{max-width:90vw;max-height:90vh;background:transparent;padding:0;border:none}
+#mo-img-preview img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:var(--rs);display:block;margin:0 auto}
+#mo-img-preview .md-close{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:1.4rem;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+/* ── SAKİN PROFİL FOTOĞRAF UPLOAD ── */
+.photo-upload-area{border:2px dashed var(--border);border-radius:var(--rs);padding:14px;text-align:center;cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+.photo-upload-area:hover{border-color:var(--accent)}
+.photo-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.photo-preview{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);margin:0 auto 8px;display:block}
 /* MOBILE */
 .mob-cards{display:none}
 .muc{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:7px;overflow:hidden}
@@ -498,7 +541,10 @@ select.fc option{background:var(--s3)}
     <button class="tab-btn" onclick="switchTab('aidat',this)"><span>💳</span><span class="tl">Aidatlar</span></button>
     <button class="tab-btn" onclick="switchTab('profiller',this)"><span>👤</span><span class="tl">Profiller</span></button>
     <button class="tab-btn" onclick="switchTab('gelir',this)"><span>📈</span><span class="tl">Gelir/Gider</span></button>
-    <button class="tab-btn" onclick="switchTab('banka',this)"><span>🏦</span><span class="tl">Banka Dökümü</span></button>
+    <button class="tab-btn" onclick="switchTab('icraatlar',this)"><span>🔨</span><span class="tl">İcraatlar</span></button>
+    <button class="tab-btn" onclick="switchTab('fazlalar',this)"><span>💰</span><span class="tl">Fazlalıklar</span></button>
+    <button class="tab-btn" onclick="switchTab('mesajlar',this)"><span>💬</span><span class="tl">Mesajlar</span><span id="msg-badge" style="display:none" class="msg-badge">!</span></button>
+    <button class="tab-btn" onclick="switchTab('banka',this)"><span>🏦</span><span class="tl">Banka</span></button>
     <button class="tab-btn" onclick="switchTab('istatistik',this)"><span>📉</span><span class="tl">İstatistik</span></button>
     <button class="tab-btn" onclick="switchTab('admin',this)"><span>⚙️</span><span class="tl">Admin</span></button>
   </div>
@@ -529,6 +575,7 @@ select.fc option{background:var(--s3)}
           <div class="li"><div class="ld ld-ex"></div>Muaf</div>
         </div>
         <div class="ytabs">
+          <button class="ytab" onclick="setYear(2024,this)">2024</button>
           <button class="ytab active" onclick="setYear(2025,this)">2025</button>
           <button class="ytab" onclick="setYear(2026,this)">2026</button>
         </div>
@@ -584,6 +631,48 @@ select.fc option{background:var(--s3)}
         <tbody id="gg-body"></tbody>
       </table>
     </div></div>
+  </div>
+
+  <!-- İCRAATLAR -->
+  <div id="panel-icraatlar" class="panel">
+    <div class="sh">
+      <div><div class="st">🔨 Yapılan İcraatlar</div><div class="sub">Sitede gerçekleştirilen işler, projeler ve harcamalar</div></div>
+      <button class="btn bp bsm" onclick="openIcraatModal()">+ Yeni İcraat Ekle</button>
+    </div>
+    <div class="sg" id="ic-summary" style="margin-bottom:16px"></div>
+    <div class="fbar" style="margin-bottom:14px">
+      <select class="fs" id="ic-filter-cat" onchange="renderIcraatlar()">
+        <option value="">Tüm Kategoriler</option>
+        <option>Bakım & Onarım</option><option>Temizlik</option><option>Güvenlik</option>
+        <option>Peyzaj & Bahçe</option><option>Elektrik</option><option>Su & Tesisat</option>
+        <option>Asansör</option><option>Boyama</option><option>İnşaat</option><option>Diğer</option>
+      </select>
+      <select class="fs" id="ic-filter-yr" onchange="renderIcraatlar()">
+        <option value="">Tüm Yıllar</option><option>2024</option><option>2025</option><option>2026</option>
+      </select>
+    </div>
+    <div class="ic-grid" id="ic-grid"></div>
+  </div>
+
+  <!-- FAZLALIKLAR -->
+  <div id="panel-fazlalar" class="panel">
+    <div class="sh">
+      <div><div class="st">💰 Aidat Fazlalıkları</div><div class="sub">Dairelere ait fazla ödemeler ve avanslar (sakinler görmez)</div></div>
+      <button class="btn bp bsm" onclick="openFazlaModal()">+ Fazlalık Ekle</button>
+    </div>
+    <div class="sg" id="faz-summary" style="margin-bottom:16px"></div>
+    <div class="faz-grid" id="faz-grid"></div>
+  </div>
+
+  <!-- MESAJLAR -->
+  <div id="panel-mesajlar" class="panel">
+    <div class="sh">
+      <div><div class="st">💬 Sakin Mesajları</div><div class="sub">Dairelerden gelen talepler ve şikayetler</div></div>
+      <div style="display:flex;gap:6px">
+        <button class="btn bsec bsm" onclick="markAllMsgRead()">✓ Tümünü Okundu İşaretle</button>
+      </div>
+    </div>
+    <div class="msg-list" id="msg-list"></div>
   </div>
 
   <!-- BANKA DÖKÜMLERİ -->
@@ -819,6 +908,17 @@ select.fc option{background:var(--s3)}
     </div>
     <div class="fg"><label class="fl">Açıklama</label><input type="text" class="fc" id="gg-desc" placeholder="Açıklama..."></div>
     <div class="fg"><label class="fl">Tutar (₺)</label><input type="number" class="fc" id="gg-amt2" placeholder="0"></div>
+    <div class="fg">
+      <label class="fl">Fatura / Makbuz Görseli <span style="color:var(--t3);font-weight:400">(opsiyonel)</span></label>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <div id="gg-fatura-prev" style="flex-shrink:0"></div>
+        <label class="btn bsec bsm" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+          📎 Fatura Ekle <input type="file" id="gg-fatura-file" accept="image/*,.pdf" style="display:none" onchange="previewGGFatura(this)">
+        </label>
+        <button class="btn br bsm" id="gg-fatura-del" style="display:none" onclick="clearGGFatura()">✕ Kaldır</button>
+      </div>
+      <input type="hidden" id="gg-fatura-data">
+    </div>
     <div class="br2">
       <button class="btn bsec" onclick="closeModal('mo-gg')">İptal</button>
       <button class="btn bp" onclick="saveGG()">💾 Kaydet</button>
@@ -831,13 +931,19 @@ select.fc option{background:var(--s3)}
   <div class="md lg">
     <div class="mh"><h3 id="mo-p-t">Birim Profili</h3><p id="mo-p-s">Sakin bilgilerini düzenle</p></div>
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)">
-      <div class="pav" id="pav-prev" style="width:66px;height:66px;font-size:1.6rem;">🏠</div>
+      <div id="pav-prev" class="pav" style="width:72px;height:72px;font-size:1.6rem;flex-shrink:0;cursor:pointer;overflow:hidden;border-radius:50%;border:2px solid var(--border)" onclick="document.getElementById('p-foto-file').click()">🏠</div>
       <div style="flex:1">
-        <label class="fl" style="margin-bottom:5px">Fotoğraf URL veya Dosya</label>
-        <input type="text" class="fc" id="p-foto" placeholder="https://... veya boş bırakın" oninput="updatePrev()" style="font-size:.76rem;margin-bottom:6px">
-        <label class="btn bsec bsm" style="cursor:pointer;display:inline-flex">
-          📁 Dosya Seç <input type="file" accept="image/*" style="display:none" onchange="fileUpload(this)">
-        </label>
+        <label class="fl" style="margin-bottom:5px">Fotoğraf</label>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <label class="btn bsec bsm" style="cursor:pointer">
+            📁 Dosyadan Yükle <input type="file" id="p-foto-file" accept="image/*" style="display:none" onchange="fileUpload(this)">
+          </label>
+          <button class="btn bsec bsm" onclick="document.getElementById('p-foto-url-row').style.display=document.getElementById('p-foto-url-row').style.display==='none'?'flex':'none'">🔗 URL Gir</button>
+          <button class="btn br bsm" id="p-foto-del" style="display:none" onclick="clearProfilePhoto()">✕ Sil</button>
+        </div>
+        <div id="p-foto-url-row" style="display:none;margin-top:7px;gap:6px">
+          <input type="text" class="fc" id="p-foto" placeholder="https://..." oninput="updatePrev()" style="font-size:.76rem;flex:1">
+        </div>
       </div>
     </div>
     <input type="hidden" id="p-id">
@@ -950,6 +1056,113 @@ select.fc option{background:var(--s3)}
   </div>
 </div>
 
+<!-- MODAL: İcraat Ekle/Düzenle -->
+<div class="mo" id="mo-icraat">
+  <div class="md lg">
+    <div class="mh"><h3 id="mo-ic-t">İcraat Ekle</h3><p>Sitede yapılan iş veya proje kaydı</p></div>
+    <input type="hidden" id="ic-id">
+    <div class="fg2">
+      <div class="fg"><label class="fl">Başlık</label><input type="text" class="fc" id="ic-title" placeholder="Asansör bakımı, Boya badana..."></div>
+      <div class="fg"><label class="fl">Kategori</label>
+        <select class="fc" id="ic-cat">
+          <option>Bakım & Onarım</option><option>Temizlik</option><option>Güvenlik</option>
+          <option>Peyzaj & Bahçe</option><option>Elektrik</option><option>Su & Tesisat</option>
+          <option>Asansör</option><option>Boyama</option><option>İnşaat</option><option>Diğer</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Tarih</label><input type="date" class="fc" id="ic-date"></div>
+      <div class="fg"><label class="fl">Maliyet (₺)</label><input type="number" class="fc" id="ic-cost" placeholder="0"></div>
+    </div>
+    <div class="fg"><label class="fl">Açıklama</label><textarea class="fc" id="ic-desc" rows="3" placeholder="İşin detaylarını girin..." style="resize:vertical"></textarea></div>
+    <div class="fg">
+      <label class="fl">Fatura / Görsel <span style="color:var(--t3);font-weight:400">(birden fazla ekleyebilirsiniz)</span></label>
+      <div id="ic-imgs-preview" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px"></div>
+      <label class="btn bsec bsm" style="cursor:pointer">
+        📎 Dosya Ekle <input type="file" id="ic-imgs-file" accept="image/*,.pdf" multiple style="display:none" onchange="addIcraatImgs(this)">
+      </label>
+    </div>
+    <div class="br2">
+      <button class="btn bsec" onclick="closeModal('mo-icraat')">İptal</button>
+      <button class="btn bp" onclick="saveIcraat()">💾 Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Fazlalık Ekle -->
+<div class="mo" id="mo-fazla">
+  <div class="md">
+    <div class="mh"><h3>💰 Fazlalık Kaydı</h3><p>Daireye yapılan fazla ödeme veya avans</p></div>
+    <input type="hidden" id="faz-id">
+    <div class="fg"><label class="fl">Daire / Birim</label><select class="fc" id="faz-uid"></select></div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Tutar (₺)</label><input type="number" class="fc" id="faz-amt" placeholder="0"></div>
+      <div class="fg"><label class="fl">Tarih</label><input type="date" class="fc" id="faz-date"></div>
+    </div>
+    <div class="fg"><label class="fl">Açıklama / Not</label><input type="text" class="fc" id="faz-note" placeholder="Fazla ödeme, avans vb."></div>
+    <div class="fg">
+      <label class="fl">Durum</label>
+      <select class="fc" id="faz-status">
+        <option value="bekliyor">⏳ Bekliyor (Sonraki aydanlara mahsup edilecek)</option>
+        <option value="mahsup">✅ Mahsup Edildi</option>
+        <option value="iade">↩ İade Edildi</option>
+      </select>
+    </div>
+    <div class="br2">
+      <button class="btn bsec" onclick="closeModal('mo-fazla')">İptal</button>
+      <button class="btn bp" onclick="saveFazla()">💾 Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Mesaj Yanıtla -->
+<div class="mo" id="mo-reply">
+  <div class="md">
+    <div class="mh"><h3>💬 Mesajı Yanıtla</h3><p id="mo-reply-from"></p></div>
+    <input type="hidden" id="reply-msg-id">
+    <div class="fg"><label class="fl">Mesaj</label><div id="reply-orig" style="background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:10px;font-size:.78rem;color:var(--t2);margin-bottom:0;line-height:1.5"></div></div>
+    <div class="fg"><label class="fl">Yanıtınız</label><textarea class="fc" id="reply-text" rows="3" placeholder="Yanıtınızı yazın..." style="resize:vertical"></textarea></div>
+    <div class="br2">
+      <button class="btn bsec" onclick="closeModal('mo-reply')">İptal</button>
+      <button class="btn bp" onclick="sendReply()">📨 Yanıtla</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Resim Önizleme -->
+<div class="mo" id="mo-img-preview" style="z-index:9000">
+  <div class="md" style="max-width:92vw;background:rgba(0,0,0,.85);padding:8px;position:relative">
+    <button onclick="closeModal('mo-img-preview')" style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:1.3rem;width:34px;height:34px;border-radius:50%;cursor:pointer;z-index:10">✕</button>
+    <img id="preview-img-src" src="" alt="" style="max-width:88vw;max-height:85vh;object-fit:contain;border-radius:8px;display:block;margin:0 auto">
+    <div id="preview-img-cap" style="text-align:center;color:var(--t2);font-size:.75rem;margin-top:8px;padding:4px"></div>
+  </div>
+</div>
+
+<!-- MODAL: Sakin Mesaj Gönder -->
+<div class="mo" id="mo-send-msg">
+  <div class="md">
+    <div class="mh"><h3>✉️ Yöneticiye Mesaj</h3><p>Talebiniz veya şikayetiniz yöneticiye iletilir</p></div>
+    <input type="hidden" id="sendmsg-uid">
+    <div class="fg">
+      <label class="fl">Konu</label>
+      <select class="fc" id="sendmsg-konu">
+        <option>Arıza Bildirimi</option>
+        <option>Aidat ile İlgili</option>
+        <option>Gürültü Şikayeti</option>
+        <option>Ortak Alan</option>
+        <option>Güvenlik</option>
+        <option>Diğer Talep</option>
+      </select>
+    </div>
+    <div class="fg"><label class="fl">Mesajınız</label><textarea class="fc" id="sendmsg-text" rows="4" placeholder="Mesajınızı buraya yazın..." style="resize:vertical"></textarea></div>
+    <div class="br2">
+      <button class="btn bsec" onclick="closeModal('mo-send-msg')">İptal</button>
+      <button class="btn bp" onclick="sendMessage()">📨 Gönder</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -964,11 +1177,15 @@ const RCAT = ['Elektrik','Su','Doğalgaz','Temizlik','Güvenlik','Asansör Bakı
 const DEF = {
   si: { siteAdi:'Kartal Sitesi', blok:'A-BLOK', adres:'Meltem Mah. Meltem Bulvarı No:8 Muratpaşa / Antalya', dc:32, sc:2 },
   periods: [
+    {id:0,s:'2024-01',e:'2024-12',a:300},
     {id:1,s:'2025-01',e:'2025-05',a:300},
     {id:2,s:'2025-06',e:'2025-12',a:500},
     {id:3,s:'2026-01',e:'2026-12',a:500}
   ],
-  units:{}, aidatlar:{}, ggk:[]
+  units:{}, aidatlar:{}, ggk:[],
+  icraatlar:[],   // Yapılan işler / icraat kayıtları
+  messages:[],    // Sakinlerden yöneticiye mesajlar
+  fazlalar:[]     // Aidat fazlalık kayıtları
 };
 
 let S = JSON.parse(JSON.stringify(DEF));
@@ -1946,7 +2163,7 @@ function switchTab(name, el) {
   if(p) p.classList.add('active');
   if(el) el.classList.add('active');
   else document.querySelectorAll('.tab-btn').forEach(b=>{ if(b.onclick&&b.onclick.toString().includes(`'${name}'`)) b.classList.add('active'); });
-  const R = {dashboard:rDash, aidat:rAidat, profiller:renderProfiller, gelir:renderGG, istatistik:rIstat, admin:rAdmin, banka:renderBankaPanel};
+  const R = {dashboard:rDash, aidat:rAidat, profiller:renderProfiller, gelir:renderGG, istatistik:rIstat, admin:rAdmin, banka:renderBankaPanel, icraatlar:renderIcraatlar, fazlalar:renderFazlalar, mesajlar:renderMesajlar};
   if(R[name]) R[name]();
 }
 
@@ -2204,14 +2421,33 @@ function updatePrev() {
   const url=document.getElementById('p-foto').value.trim();
   const uid=document.getElementById('p-id').value;
   const p=document.getElementById('pav-prev');
-  p.innerHTML=url?`<img src="${url}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`:uid.startsWith('D')?'🏠':'🏪';
+  if(url){
+    p.innerHTML=`<img src="${url}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    const delBtn=document.getElementById('p-foto-del');
+    if(delBtn) delBtn.style.display='inline-flex';
+  } else {
+    p.innerHTML=uid.startsWith('D')?'🏠':'🏪';
+    const delBtn=document.getElementById('p-foto-del');
+    if(delBtn) delBtn.style.display='none';
+  }
 }
 
 function fileUpload(inp) {
   const f=inp.files[0]; if(!f) return;
+  if(f.size>1.5*1024*1024){toast('Fotoğraf 1.5MB\'den küçük olmalı!','ts-e');return;}
   const r=new FileReader();
-  r.onload=e=>{document.getElementById('p-foto').value=e.target.result;updatePrev();};
+  r.onload=e=>{
+    document.getElementById('p-foto').value=e.target.result;
+    updatePrev();
+    document.getElementById('p-foto-url-row').style.display='none';
+  };
   r.readAsDataURL(f);
+}
+
+function clearProfilePhoto() {
+  document.getElementById('p-foto').value='';
+  document.getElementById('p-foto-file').value='';
+  updatePrev();
 }
 
 async function saveProfil() {
@@ -2242,13 +2478,42 @@ function openGGModal(type) {
   document.getElementById('gg-desc').value='';
   const cats=type==='gelir'?GCAT:RCAT;
   document.getElementById('gg-cat').innerHTML=cats.map(c=>`<option>${c}</option>`).join('');
+  document.getElementById('gg-fatura-data').value='';
+  document.getElementById('gg-fatura-prev').innerHTML='';
+  const delBtn=document.getElementById('gg-fatura-del');
+  if(delBtn) delBtn.style.display='none';
   document.getElementById('mo-gg').classList.add('open');
+}
+
+function previewGGFatura(input) {
+  const file=input.files[0]; if(!file) return;
+  if(file.size>2*1024*1024){toast('Dosya 2MB\'den küçük olmalı!','ts-e');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const data=e.target.result;
+    document.getElementById('gg-fatura-data').value=data;
+    document.getElementById('gg-fatura-prev').innerHTML=file.type.startsWith('image/')
+      ?`<img src="${data}" class="gg-fatura-thumb" onclick="openImgPreview('${data}','Fatura')" title="Önizlemek için tıklayın">`
+      :`<span class="gg-fatura-ph" title="${file.name}">📄</span>`;
+    const delBtn=document.getElementById('gg-fatura-del');
+    if(delBtn) delBtn.style.display='inline-flex';
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearGGFatura() {
+  document.getElementById('gg-fatura-data').value='';
+  document.getElementById('gg-fatura-prev').innerHTML='';
+  const delBtn=document.getElementById('gg-fatura-del');
+  if(delBtn) delBtn.style.display='none';
+  document.getElementById('gg-fatura-file').value='';
 }
 
 async function saveGG() {
   const amt=parseFloat(document.getElementById('gg-amt2').value);
   if(!amt||amt<=0){toast('Geçerli tutar girin!','ts-e');return;}
-  S.ggk.unshift({id:Date.now(),type:document.getElementById('gg-type').value,date:document.getElementById('gg-date').value,cat:document.getElementById('gg-cat').value,desc:document.getElementById('gg-desc').value.trim(),amount:amt});
+  const fatura=document.getElementById('gg-fatura-data').value||'';
+  S.ggk.unshift({id:Date.now(),type:document.getElementById('gg-type').value,date:document.getElementById('gg-date').value,cat:document.getElementById('gg-cat').value,desc:document.getElementById('gg-desc').value.trim(),amount:amt,fatura});
   await save(); closeModal('mo-gg'); renderGG(); rDash();
   toast('Kayıt eklendi ✓','ts-s');
 }
@@ -2285,7 +2550,8 @@ function renderGG() {
   if(!filtered.length) h=`<tr><td colspan="6"><div class="empty"><div class="ei">📋</div><p>Kayıt bulunamadı</p></div></td></tr>`;
   else filtered.forEach(x=>{
     const c=x.type==='gelir'?'var(--green)':'var(--red)';
-    h+=`<tr><td style="white-space:nowrap;color:var(--t2)">${x.date||'—'}</td><td><span class="tbgg tbgg-${x.type==='gelir'?'g':'r'}">${x.type==='gelir'?'GELİR':'GİDER'}</span></td><td style="color:var(--t2)">${x.cat||'—'}</td><td>${x.desc||'—'}</td><td style="text-align:right;font-weight:700;color:${c}">${fmt(x.amount)}</td><td><button class="delbtn" onclick="delGG(${x.id})">✕</button></td></tr>`;
+    const faturaBtn=x.fatura?`<span class="gg-fatura-ph" style="width:28px;height:28px;font-size:.85rem;margin-right:6px" onclick="openImgPreview('${x.fatura.length>200?x.fatura:''}','Fatura')" title="Faturayı görüntüle">🧾</span>`:'';
+    h+=`<tr><td style="white-space:nowrap;color:var(--t2)">${x.date||'—'}</td><td><span class="tbgg tbgg-${x.type==='gelir'?'g':'r'}">${x.type==='gelir'?'GELİR':'GİDER'}</span></td><td style="color:var(--t2)">${x.cat||'—'}</td><td>${x.desc||'—'}</td><td style="text-align:right;font-weight:700;color:${c}">${faturaBtn}${fmt(x.amount)}</td><td><button class="delbtn" onclick="delGG(${x.id})">✕</button></td></tr>`;
   });
   document.getElementById('gg-body').innerHTML=h;
 }
@@ -2594,16 +2860,17 @@ function showResidentView(uid) {
 // RESIDENT DASHBOARD
 // ─────────────────────────────────────────────
 let resCY = 2025;
+let resTab = 'aidat'; // aktif sakin sekmesi
 
 function renderResidentDashboard(uid) {
   const u = S.units[uid]||{};
   const exempt = u.exempt;
   const {ode,bek,pct} = calcUnit(uid, resCY);
-  const pc = pct===100?'var(--green)':pct>=50?'var(--a2)':'var(--red)';
   const tipM = {ev_sahibi:'🏠 Ev Sahibi',kiraci:'🔑 Kiracı',bos:'⬜ Boş'};
-  const av = u.foto?`<img src="${u.foto}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`:(uid.startsWith('D')?'🏠':'🏪');
+  const av = u.foto
+    ?`<img src="${u.foto}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+    :(uid.startsWith('D')?'🏠':'🏪');
 
-  // Bu ay
   const now=new Date(), tm=now.getMonth(), ty=now.getFullYear();
   const ay = ty<=2025?2025:2026;
   const baT = getTutar(ay,tm);
@@ -2612,29 +2879,37 @@ function renderResidentDashboard(uid) {
   if(baA.status==='paid') baOde=baT;
   else if(baA.status==='partial') baOde=baA.amount||0;
 
-  // Toplam borç
   let totalBorc=0;
   if(!exempt){
     for(let i=0;i<12;i++){
       const t=getTutar(resCY,i), a=getAR(resCY,uid,i);
-      let o=0;
-      if(a.status==='paid')o=t;else if(a.status==='partial')o=a.amount||0;
+      let o=0; if(a.status==='paid')o=t; else if(a.status==='partial')o=a.amount||0;
       totalBorc+=Math.max(0,t-o);
     }
   }
 
-  // Duyurular
-  const anns = S.announcements||[];
+  // Okunmamış yönetici yanıtı var mı?
+  const myMsgs=(S.messages||[]).filter(m=>m.uid===uid&&m.reply&&!m.residentRead);
+  const hasNewReply=myMsgs.length>0;
 
   let h = `
   <div class="res-hero">
-    <div class="res-hero-av">${av}</div>
+    <div class="res-hero-av" style="cursor:pointer;position:relative" onclick="document.getElementById('res-foto-input-${uid}').click()" title="Fotoğrafı güncelle">
+      ${av}
+      <div style="position:absolute;bottom:0;right:0;background:var(--accent);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.7rem;border:2px solid var(--bg)">📷</div>
+      <input type="file" id="res-foto-input-${uid}" accept="image/*" style="display:none" onchange="resUpdatePhoto(this,'${uid}')">
+    </div>
     <div class="res-hero-info">
       <h2>${fullName(uid)||uid}</h2>
       <p>${uid} · ${uid.startsWith('D')?'Daire':'Dükkan'} · ${tipM[u.tip]||'—'}</p>
       ${u.tel?`<p style="font-size:.72rem;color:var(--t3);margin-top:2px">📞 ${u.tel}</p>`:''}
       <span class="rbadge">${exempt?'⚪ Muaf Birim':'💳 Aktif'}</span>
-      <button class="chpw-link" style="display:block;margin-top:8px" onclick="openChPw('${uid}')">🔑 Şifremi Değiştir</button>
+      <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+        <button class="chpw-link" onclick="openChPw('${uid}')">🔑 Şifremi Değiştir</button>
+        <button class="chpw-link" style="background:rgba(79,142,247,.15);color:var(--accent)" onclick="openSendMsgModal('${uid}')">
+          ✉️ Yöneticiye Mesaj${hasNewReply?` <span class="msg-badge">${myMsgs.length}</span>`:''}
+        </button>
+      </div>
     </div>
   </div>
 
@@ -2645,10 +2920,37 @@ function renderResidentDashboard(uid) {
     <div class="res-sc ry"><div class="res-sl">Kalan (${resCY})</div><div class="res-sv ry">${exempt?'Muaf':fmt(bek-ode)}</div><div class="res-ss">${exempt?'—':'Yıllık kalan'}</div></div>
   </div>
 
-  <div class="res-section">
+  <!-- Sakin Sekmeleri -->
+  <div style="display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap">
+    <button class="ytab ${resTab==='aidat'?'active':''}" onclick="setResTab('aidat','${uid}',this)" style="border-radius:8px;padding:8px 14px">💳 Ödemelerim</button>
+    <button class="ytab ${resTab==='icraatlar'?'active':''}" onclick="setResTab('icraatlar','${uid}',this)" style="border-radius:8px;padding:8px 14px">🔨 Site İcraatları</button>
+    <button class="ytab ${resTab==='mesajlar'?'active':''}" onclick="setResTab('mesajlar','${uid}',this)" style="border-radius:8px;padding:8px 14px">💬 Mesajlarım${hasNewReply?` <span class="msg-badge">${myMsgs.length}</span>`:''}</button>
+    <button class="ytab ${resTab==='duyurular'?'active':''}" onclick="setResTab('duyurular','${uid}',this)" style="border-radius:8px;padding:8px 14px">📢 Duyurular</button>
+  </div>
+  <div id="res-tab-content">`;
+
+  h += renderResTabContent(uid);
+  h += `</div>`;
+
+  document.getElementById('resident-main').innerHTML = h;
+}
+
+function renderResTabContent(uid) {
+  if(resTab==='aidat') return renderResAidat(uid);
+  if(resTab==='icraatlar') return renderResIcraatlar();
+  if(resTab==='mesajlar') return renderResMesajlar(uid);
+  if(resTab==='duyurular') return renderResDuyurular();
+  return '';
+}
+
+function renderResAidat(uid) {
+  const u=S.units[uid]||{}, exempt=u.exempt;
+  const now=new Date(), tm=now.getMonth();
+  let h=`<div class="res-section">
     <div class="res-section-hdr">
       <h3>💳 Aidat Ödemeleri</h3>
       <div class="res-ytabs">
+        <button class="res-ytab ${resCY===2024?'active':''}" onclick="setResCY(2024,'${uid}',this)">2024</button>
         <button class="res-ytab ${resCY===2025?'active':''}" onclick="setResCY(2025,'${uid}',this)">2025</button>
         <button class="res-ytab ${resCY===2026?'active':''}" onclick="setResCY(2026,'${uid}',this)">2026</button>
       </div>
@@ -2656,76 +2958,123 @@ function renderResidentDashboard(uid) {
     <div class="res-months">`;
 
   MTR.forEach((m,i) => {
-    if(exempt){
-      h+=`<div class="res-month exempt"><div class="res-mn">${m}</div><div class="res-mi">⚪</div><div class="res-ma">Muaf</div></div>`;
-      return;
-    }
-    const a = getAR(resCY,uid,i);
-    const t = getTutar(resCY,i);
-    let icon='✗', maClass='', amtTxt=`${fmt(t)} borç`;
+    if(exempt){h+=`<div class="res-month exempt"><div class="res-mn">${m}</div><div class="res-mi">⚪</div><div class="res-ma">Muaf</div></div>`;return;}
+    const a=getAR(resCY,uid,i), t=getTutar(resCY,i);
+    let icon='✗', amtTxt=`${fmt(t)} borç`;
     if(a.status==='paid'){icon='✓';amtTxt=fmt(t)+' ödendi';}
     else if(a.status==='partial'){icon='~';amtTxt=fmt(a.amount||0)+' ödendi';}
-    const isFuture = resCY>now.getFullYear() || (resCY===now.getFullYear()&&i>tm);
+    const isFuture=resCY>now.getFullYear()||(resCY===now.getFullYear()&&i>tm);
     h+=`<div class="res-month ${a.status}${isFuture?' future':''}" onclick="openResMonthDetail('${uid}',${i})">
-      <div class="res-mn">${m}</div>
-      <div class="res-mi">${icon}</div>
-      <div class="res-ma">${amtTxt}</div>
-    </div>`;
+      <div class="res-mn">${m}</div><div class="res-mi">${icon}</div><div class="res-ma">${amtTxt}</div></div>`;
   });
 
-  h+=`</div>
-    <div style="padding:0 16px 14px">
-      <div class="legend" style="display:flex">
-        <div class="li"><div class="ld ld-p"></div>Ödendi</div>
-        <div class="li"><div class="ld ld-pa"></div>Kısmi</div>
-        <div class="li"><div class="ld ld-u"></div>Ödenmedi</div>
-      </div>
-    </div>
-  </div>`;
+  h+=`</div><div style="padding:0 16px 14px"><div class="legend" style="display:flex">
+    <div class="li"><div class="ld ld-p"></div>Ödendi</div>
+    <div class="li"><div class="ld ld-pa"></div>Kısmi</div>
+    <div class="li"><div class="ld ld-u"></div>Ödenmedi</div></div></div></div>`;
 
-  // Duyurular
-  if(anns.length>0){
-    h+=`<div class="res-section">
-      <div class="res-section-hdr"><h3>📢 Duyurular</h3></div>
-      <div style="padding:12px 16px">`;
-    [...anns].reverse().forEach(a=>{
-      h+=`<div class="res-msg-card"><div class="res-msg-date">${a.date}</div><div class="res-msg-text">${a.text}</div></div>`;
-    });
-    h+=`</div></div>`;
-  }
-
-  // Aidat detay (tablo)
-  h+=`<div class="res-section">
-    <div class="res-section-hdr"><h3>📋 Detaylı Ödeme Geçmişi (${resCY})</h3></div>`;
+  h+=`<div class="res-section"><div class="res-section-hdr"><h3>📋 Detaylı Ödeme Geçmişi (${resCY})</h3></div>`;
   MTR.forEach((m,i)=>{
     if(exempt){h+=`<div class="res-detail-row"><span class="res-detail-label">${m}</span><span class="res-detail-val" style="color:var(--purple)">Muaf</span></div>`;return;}
     const a=getAR(resCY,uid,i), t=getTutar(resCY,i);
-    let valTxt='', valC='var(--red)';
+    let valTxt='',valC='var(--red)';
     if(a.status==='paid'){valTxt=`✅ ${fmt(t)} — ${a.date||'tarih yok'}`;valC='var(--green)';}
     else if(a.status==='partial'){valTxt=`⚠️ ${fmt(a.amount||0)} ödendi, ${fmt(t-(a.amount||0))} kalan`;valC='var(--a2)';}
     else{valTxt=`❌ ${fmt(t)} ödenmedi`;valC='var(--red)';}
+    if(a.makbuz) valTxt+=` · Makbuz: ${a.makbuz}`;
+    if(a.note) valTxt+=` · ${a.note}`;
     h+=`<div class="res-detail-row"><span class="res-detail-label">${m} ${resCY}</span><span class="res-detail-val" style="color:${valC};font-size:.8rem">${valTxt}</span></div>`;
   });
   h+=`</div>`;
+  return h;
+}
 
-  document.getElementById('resident-main').innerHTML = h;
+function renderResIcraatlar() {
+  const items=(S.icraatlar||[]).slice().sort((a,b)=>b.date?.localeCompare(a.date||'')||0);
+  if(!items.length) return `<div class="res-section"><div class="empty"><div class="ei">🔨</div><p>Henüz icraat kaydı yok</p></div></div>`;
+  let h=`<div class="res-section"><div class="res-section-hdr"><h3>🔨 Site İcraatları</h3></div>
+    <div class="ic-grid" style="padding:4px 16px 16px">`;
+  items.forEach(x=>{
+    const mainImg=(x.imgs||[]).find(i=>i.type==='image');
+    h+=`<div class="ic-card">
+      ${mainImg?`<img class="ic-img" src="${mainImg.data}" alt="${x.title}" onclick="openImgPreview('${mainImg.data}','${x.title}')">`:`<div class="ic-img-ph">🔨</div>`}
+      <div class="ic-body">
+        <div class="ic-cat">${x.cat||'Diğer'}</div>
+        <div class="ic-title">${x.title||'—'}</div>
+        <div class="ic-meta"><span>📅 ${x.date||'—'}</span>${x.cost?`<span>💸 ${fmt(x.cost)}</span>`:''}</div>
+        <div class="ic-desc">${x.desc||''}</div>
+        ${(x.imgs||[]).length?`<div class="ic-fatura">${x.imgs.map((img,i)=>`<span class="ic-ftag" onclick="openImgPreview('${img.data}','${x.title} — Belge ${i+1}')">${img.type==='image'?'🖼':'📄'} Belge ${i+1}</span>`).join('')}</div>`:''}
+      </div>
+    </div>`;
+  });
+  h+=`</div></div>`;
+  return h;
+}
+
+function renderResMesajlar(uid) {
+  const myMsgs=(S.messages||[]).filter(m=>m.uid===uid).sort((a,b)=>b.id-a.id);
+  let h=`<div class="res-section"><div class="res-section-hdr">
+    <h3>💬 Mesajlarım</h3>
+    <button class="btn bp bsm" onclick="openSendMsgModal('${uid}')">✉️ Yeni Mesaj</button>
+  </div><div style="padding:8px 16px 16px">`;
+  if(!myMsgs.length){h+=`<div class="empty"><div class="ei">💬</div><p>Henüz mesaj göndermediniz</p></div>`;}
+  myMsgs.forEach(m=>{
+    h+=`<div class="msg-card" style="margin-bottom:10px">
+      <div class="msg-header"><div class="msg-from">${m.konu||'Genel'}</div><div class="msg-date">${m.date||''}</div></div>
+      <div class="msg-text">${m.text||''}</div>
+      ${m.reply?`<div class="msg-reply"><div class="msg-reply-hdr">🔑 Yönetici Yanıtı · ${m.replyDate||''}</div>${m.reply}</div>`
+               :`<div style="font-size:.7rem;color:var(--t3);margin-top:6px">⏳ Yanıt bekleniyor...</div>`}
+    </div>`;
+  });
+  h+=`</div></div>`;
+  // Okundu işaretle
+  myMsgs.filter(m=>m.reply&&!m.residentRead).forEach(m=>{m.residentRead=true;});
+  if(myMsgs.some(m=>m.reply&&m.residentRead)) save();
+  return h;
+}
+
+function renderResDuyurular() {
+  const anns=(S.announcements||[]);
+  let h=`<div class="res-section"><div class="res-section-hdr"><h3>📢 Duyurular</h3></div><div style="padding:8px 16px 16px">`;
+  if(!anns.length) h+=`<div class="empty"><div class="ei">📢</div><p>Duyuru yok</p></div>`;
+  [...anns].reverse().forEach(a=>{
+    h+=`<div class="res-msg-card"><div class="res-msg-date">${a.date}</div><div class="res-msg-text">${a.text}</div></div>`;
+  });
+  h+=`</div></div>`;
+  return h;
+}
+
+function setResTab(tab, uid, el) {
+  resTab=tab;
+  document.querySelectorAll('.res-hero ~ div .ytab').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('res-tab-content').innerHTML=renderResTabContent(uid);
 }
 
 function setResCY(y, uid, el) {
   resCY=y;
   document.querySelectorAll('.res-ytab').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
-  renderResidentDashboard(uid);
+  document.getElementById('res-tab-content').innerHTML=renderResTabContent(uid);
+}
+
+async function resUpdatePhoto(input, uid) {
+  const f=input.files[0]; if(!f) return;
+  if(f.size>1.5*1024*1024){toast('Fotoğraf 1.5MB\'den küçük olmalı!','ts-e');return;}
+  const reader=new FileReader();
+  reader.onload=async e=>{
+    if(!S.units[uid]) S.units[uid]={};
+    S.units[uid].foto=e.target.result;
+    await save();
+    renderResidentDashboard(uid);
+    toast('Fotoğrafınız güncellendi ✓','ts-s');
+  };
+  reader.readAsDataURL(f);
 }
 
 function openResMonthDetail(uid, mi) {
-  const a = getAR(resCY,uid,mi);
-  const t = getTutar(resCY,mi);
-  const u = S.units[uid]||{};
-  if(a.status==='unpaid'){
-    toast(`${MTR[mi]} ${resCY}: ${fmt(t)} ödenmedi`,'ts-i');
-    return;
-  }
+  const a=getAR(resCY,uid,mi), t=getTutar(resCY,mi), u=S.units[uid]||{};
+  if(a.status==='unpaid'){toast(`${MTR[mi]} ${resCY}: ${fmt(t)} ödenmedi`,'ts-i');return;}
   let msg='';
   if(a.status==='paid') msg=`✅ ${fmt(t)} ödendi`;
   else msg=`⚠️ ${fmt(a.amount||0)} ödendi, ${fmt(t-(a.amount||0))} kalan`;
@@ -2817,6 +3166,291 @@ function renderAnnList() {
   document.getElementById('ann-list').innerHTML=anns.length
     ?[...anns].reverse().map(a=>`<div class="res-msg-card" style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><div><div class="res-msg-date">${a.date}</div><div class="res-msg-text">${a.text}</div></div><button class="delbtn" onclick="deleteAnn(${a.id})">✕</button></div>`).join('')
     :'<p style="font-size:.75rem;color:var(--t3)">Henüz duyuru yok.</p>';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// İCRAATLAR
+// ═══════════════════════════════════════════════════════════════
+function renderIcraatlar() {
+  if(!S.icraatlar) S.icraatlar=[];
+  const catF = document.getElementById('ic-filter-cat')?.value||'';
+  const yrF  = document.getElementById('ic-filter-yr')?.value||'';
+  let items = [...S.icraatlar].sort((a,b)=>b.date?.localeCompare(a.date||'')||0);
+  if(catF) items=items.filter(x=>x.cat===catF);
+  if(yrF)  items=items.filter(x=>x.date?.startsWith(yrF));
+
+  const totalCost = S.icraatlar.reduce((s,x)=>s+(x.cost||0),0);
+  document.getElementById('ic-summary').innerHTML=`
+    <div class="sc cb"><div class="sl">Toplam İcraat</div><div class="sv cb">${S.icraatlar.length}</div><div class="ss">Kayıtlı proje</div></div>
+    <div class="sc cr"><div class="sl">Toplam Maliyet</div><div class="sv cr">${fmt(totalCost)}</div><div class="ss">Tüm dönem</div></div>
+    <div class="sc cg"><div class="sl">Bu Yıl</div><div class="sv cg">${S.icraatlar.filter(x=>x.date?.startsWith(new Date().getFullYear())).length}</div><div class="ss">${new Date().getFullYear()} icraat</div></div>`;
+
+  if(!items.length){
+    document.getElementById('ic-grid').innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="ei">🔨</div><p>Henüz icraat kaydı yok</p><p style="font-size:.72rem;color:var(--t3)">Yönetici + Ekle butonundan kayıt oluşturun</p></div>`;
+    return;
+  }
+  document.getElementById('ic-grid').innerHTML=items.map(x=>{
+    const imgs=x.imgs||[];
+    const mainImg=imgs.find(i=>i.type==='image')||null;
+    const faturaCount=imgs.length;
+    return `<div class="ic-card">
+      ${mainImg?`<img class="ic-img" src="${mainImg.data}" alt="${x.title}" onclick="openImgPreview('${mainImg.data}','${x.title}')">`
+               :`<div class="ic-img-ph">🔨</div>`}
+      <div class="ic-body">
+        <div class="ic-cat">${x.cat||'Diğer'}</div>
+        <div class="ic-title">${x.title||'İsimsiz'}</div>
+        <div class="ic-meta">
+          <span>📅 ${x.date||'—'}</span>
+          ${x.cost?`<span>💸 ${fmt(x.cost)}</span>`:''}
+          ${faturaCount?`<span>📎 ${faturaCount} dosya</span>`:''}
+        </div>
+        <div class="ic-desc">${x.desc||''}</div>
+        ${faturaCount?`<div class="ic-fatura">${imgs.map((img,i)=>`<span class="ic-ftag" onclick="openImgPreview('${img.data}','${x.title} — Belge ${i+1}')">
+          ${img.type==='image'?'🖼':'📄'} Belge ${i+1}</span>`).join('')}</div>`:''}
+        <div style="margin-top:10px;display:flex;gap:6px">
+          <button class="btn bsec bsm" onclick="openIcraatModal('${x.id}')">✏️ Düzenle</button>
+          <button class="btn br bsm" onclick="delIcraat('${x.id}')">✕ Sil</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openIcraatModal(id) {
+  const ic = id ? (S.icraatlar||[]).find(x=>x.id===id) : null;
+  document.getElementById('ic-id').value = id||'';
+  document.getElementById('ic-title').value = ic?.title||'';
+  document.getElementById('ic-cat').value = ic?.cat||'Bakım & Onarım';
+  document.getElementById('ic-date').value = ic?.date||new Date().toISOString().slice(0,10);
+  document.getElementById('ic-cost').value = ic?.cost||'';
+  document.getElementById('ic-desc').value = ic?.desc||'';
+  document.getElementById('mo-ic-t').textContent = id ? 'İcraat Düzenle' : 'İcraat Ekle';
+  // Var olan görseller
+  const prev=document.getElementById('ic-imgs-preview');
+  prev.innerHTML='';
+  if(ic?.imgs) ic.imgs.forEach((img,i)=>{ addImgThumb(prev, img.data, img.type, i); });
+  document.getElementById('mo-icraat').classList.add('open');
+}
+
+function addImgThumb(container, data, type, idx) {
+  const div=document.createElement('div');
+  div.style.cssText='position:relative;display:inline-block';
+  div.innerHTML=type==='image'
+    ?`<img src="${data}" style="width:60px;height:60px;object-fit:cover;border-radius:6px;border:1px solid var(--border);cursor:pointer" onclick="openImgPreview('${data}','Belge')">`
+    :`<div style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:var(--s3);border:1px solid var(--border);border-radius:6px;font-size:1.5rem">📄</div>`;
+  div.innerHTML+=`<button onclick="this.parentElement.remove()" style="position:absolute;top:-6px;right:-6px;width:18px;height:18px;background:var(--red);border:none;color:#fff;border-radius:50%;font-size:.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>`;
+  container.appendChild(div);
+}
+
+function addIcraatImgs(input) {
+  const prev=document.getElementById('ic-imgs-preview');
+  Array.from(input.files).forEach(file=>{
+    if(file.size>2*1024*1024){toast(`${file.name} 2MB'den büyük, atlandı`,'ts-i');return;}
+    const reader=new FileReader();
+    const type=file.type.startsWith('image/')?'image':'doc';
+    reader.onload=e=>addImgThumb(prev, e.target.result, type, Date.now());
+    reader.readAsDataURL(file);
+  });
+  input.value='';
+}
+
+async function saveIcraat() {
+  const id = document.getElementById('ic-id').value || String(Date.now());
+  const title = document.getElementById('ic-title').value.trim();
+  if(!title){toast('Başlık zorunlu!','ts-e');return;}
+
+  // Görselleri topla
+  const prevDiv = document.getElementById('ic-imgs-preview');
+  const imgs=[];
+  prevDiv.querySelectorAll('img[src],div[style*="📄"]').forEach(el=>{
+    if(el.tagName==='IMG'&&el.src) imgs.push({type:'image',data:el.src});
+    else imgs.push({type:'doc',data:''});
+  });
+  // daha doğru: img elementlerinden veri çek
+  const imgEls=prevDiv.querySelectorAll('img');
+  const docEls=prevDiv.querySelectorAll('div[style*="1.5rem"]');
+  const finalImgs=[...Array.from(imgEls).map(el=>({type:'image',data:el.src})),
+                   ...Array.from(docEls).map(()=>({type:'doc',data:''}))];
+
+  if(!S.icraatlar) S.icraatlar=[];
+  const idx=S.icraatlar.findIndex(x=>x.id===id);
+  const obj={id, title, cat:document.getElementById('ic-cat').value,
+    date:document.getElementById('ic-date').value,
+    cost:parseFloat(document.getElementById('ic-cost').value)||0,
+    desc:document.getElementById('ic-desc').value.trim(),
+    imgs:finalImgs};
+  if(idx>=0) S.icraatlar[idx]=obj; else S.icraatlar.unshift(obj);
+  await save(); closeModal('mo-icraat'); renderIcraatlar();
+  toast('İcraat kaydedildi ✓','ts-s');
+}
+
+async function delIcraat(id) {
+  if(!confirm('Bu icraat kaydı silinecek. Onaylıyor musunuz?')) return;
+  S.icraatlar=(S.icraatlar||[]).filter(x=>x.id!==id);
+  await save(); renderIcraatlar();
+  toast('İcraat silindi','ts-i');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// FAZLALIKLAR
+// ═══════════════════════════════════════════════════════════════
+function renderFazlalar() {
+  if(!S.fazlalar) S.fazlalar=[];
+  const topBekleyen = S.fazlalar.filter(f=>f.status==='bekliyor').reduce((s,f)=>s+(f.amt||0),0);
+  const topMahsup   = S.fazlalar.filter(f=>f.status==='mahsup').reduce((s,f)=>s+(f.amt||0),0);
+  document.getElementById('faz-summary').innerHTML=`
+    <div class="sc cg"><div class="sl">Toplam Fazlalık</div><div class="sv cg">${S.fazlalar.length}</div><div class="ss">Kayıt</div></div>
+    <div class="sc cy"><div class="sl">Bekleyen</div><div class="sv cy">${fmt(topBekleyen)}</div><div class="ss">Mahsup edilmedi</div></div>
+    <div class="sc cb"><div class="sl">Mahsup</div><div class="sv cb">${fmt(topMahsup)}</div><div class="ss">İşlem tamamlandı</div></div>`;
+
+  if(!S.fazlalar.length){
+    document.getElementById('faz-grid').innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="ei">💰</div><p>Fazlalık kaydı yok</p></div>`;
+    return;
+  }
+  const statusLabel={bekliyor:'⏳ Bekliyor',mahsup:'✅ Mahsup',iade:'↩ İade'};
+  const statusColor={bekliyor:'var(--a2)',mahsup:'var(--green)',iade:'var(--t3)'};
+  document.getElementById('faz-grid').innerHTML=S.fazlalar.map(f=>`
+    <div class="faz-card">
+      <div class="faz-uid">${f.uid} — ${fullName(f.uid)}</div>
+      <div class="faz-amt">${fmt(f.amt)}</div>
+      <div style="font-size:.72rem;color:${statusColor[f.status]||'var(--t2)'};font-weight:700;margin-bottom:4px">${statusLabel[f.status]||f.status}</div>
+      <div class="faz-note">📅 ${f.date||'—'} · ${f.note||''}</div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn bsec bsm" onclick="openFazlaModal('${f.id}')">✏️ Düzenle</button>
+        <button class="btn br bsm" onclick="delFazla('${f.id}')">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+function openFazlaModal(id) {
+  const f = id ? (S.fazlalar||[]).find(x=>x.id===id) : null;
+  document.getElementById('faz-id').value=id||'';
+  const sel=document.getElementById('faz-uid');
+  sel.innerHTML=getUnits().map(uid=>`<option value="${uid}" ${uid===(f?.uid||'')?' selected':''}>${uid} — ${fullName(uid)}</option>`).join('');
+  document.getElementById('faz-amt').value=f?.amt||'';
+  document.getElementById('faz-date').value=f?.date||new Date().toISOString().slice(0,10);
+  document.getElementById('faz-note').value=f?.note||'';
+  document.getElementById('faz-status').value=f?.status||'bekliyor';
+  document.getElementById('mo-fazla').classList.add('open');
+}
+
+async function saveFazla() {
+  const id=document.getElementById('faz-id').value||String(Date.now());
+  const amt=parseFloat(document.getElementById('faz-amt').value)||0;
+  if(!amt){toast('Tutar giriniz!','ts-e');return;}
+  if(!S.fazlalar) S.fazlalar=[];
+  const obj={id, uid:document.getElementById('faz-uid').value,
+    amt, date:document.getElementById('faz-date').value,
+    note:document.getElementById('faz-note').value.trim(),
+    status:document.getElementById('faz-status').value};
+  const idx=S.fazlalar.findIndex(x=>x.id===id);
+  if(idx>=0) S.fazlalar[idx]=obj; else S.fazlalar.unshift(obj);
+  await save(); closeModal('mo-fazla'); renderFazlalar();
+  toast('Fazlalık kaydedildi ✓','ts-s');
+}
+
+async function delFazla(id) {
+  S.fazlalar=(S.fazlalar||[]).filter(x=>x.id!==id);
+  await save(); renderFazlalar(); toast('Silindi','ts-i');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MESAJLAR (Sakin → Yönetici)
+// ═══════════════════════════════════════════════════════════════
+function renderMesajlar() {
+  if(!S.messages) S.messages=[];
+  const msgs=[...S.messages].sort((a,b)=>b.id-a.id);
+  const unread=msgs.filter(m=>!m.read).length;
+  const badge=document.getElementById('msg-badge');
+  if(badge) {badge.textContent=unread||'!'; badge.style.display=unread?'inline':'none';}
+
+  if(!msgs.length){
+    document.getElementById('msg-list').innerHTML=`<div class="empty"><div class="ei">💬</div><p>Henüz mesaj yok</p></div>`;
+    return;
+  }
+  document.getElementById('msg-list').innerHTML=msgs.map(m=>`
+    <div class="msg-card ${m.read?'':'unread'}" id="msgcard-${m.id}">
+      <div class="msg-header">
+        <div class="msg-from">${m.uid} — ${fullName(m.uid)} <span style="color:var(--t3);font-weight:400">${m.konu||''}</span>
+          ${!m.read?`<span class="msg-badge">Yeni</span>`:''}</div>
+        <div class="msg-date">${m.date||''}</div>
+      </div>
+      <div class="msg-text">${m.text||''}</div>
+      ${m.reply?`<div class="msg-reply"><div class="msg-reply-hdr">✉️ Yanıtınız · ${m.replyDate||''}</div>${m.reply}</div>`:''}
+      <div style="margin-top:8px;display:flex;gap:6px">
+        <button class="btn bp bsm" onclick="openReplyModal(${m.id})">💬 Yanıtla</button>
+        <button class="btn bsec bsm" onclick="markMsgRead(${m.id})">✓ Okundu</button>
+        <button class="btn br bsm" onclick="delMsg(${m.id})">✕ Sil</button>
+      </div>
+    </div>`).join('');
+}
+
+function openReplyModal(id) {
+  const m=(S.messages||[]).find(x=>x.id===id);
+  if(!m) return;
+  document.getElementById('reply-msg-id').value=id;
+  document.getElementById('mo-reply-from').textContent=`${m.uid} — ${fullName(m.uid)} · ${m.date||''}`;
+  document.getElementById('reply-orig').textContent=m.text||'';
+  document.getElementById('reply-text').value=m.reply||'';
+  document.getElementById('mo-reply').classList.add('open');
+}
+
+async function sendReply() {
+  const id=parseInt(document.getElementById('reply-msg-id').value);
+  const text=document.getElementById('reply-text').value.trim();
+  if(!text){toast('Yanıt boş olamaz!','ts-e');return;}
+  const m=(S.messages||[]).find(x=>x.id===id);
+  if(!m) return;
+  m.reply=text; m.replyDate=new Date().toLocaleDateString('tr-TR'); m.read=true;
+  await save(); closeModal('mo-reply'); renderMesajlar();
+  toast('Yanıt gönderildi ✓','ts-s');
+}
+
+async function markMsgRead(id) {
+  const m=(S.messages||[]).find(x=>x.id===id);
+  if(m){m.read=true; await save(); renderMesajlar();}
+}
+
+async function markAllMsgRead() {
+  (S.messages||[]).forEach(m=>m.read=true);
+  await save(); renderMesajlar(); toast('Tümü okundu işaretlendi','ts-s');
+}
+
+async function delMsg(id) {
+  S.messages=(S.messages||[]).filter(x=>x.id!==id);
+  await save(); renderMesajlar(); toast('Mesaj silindi','ts-i');
+}
+
+// Sakin tarafından mesaj gönder
+function openSendMsgModal(uid) {
+  document.getElementById('sendmsg-uid').value=uid;
+  document.getElementById('sendmsg-text').value='';
+  document.getElementById('mo-send-msg').classList.add('open');
+}
+
+async function sendMessage() {
+  const uid=document.getElementById('sendmsg-uid').value;
+  const text=document.getElementById('sendmsg-text').value.trim();
+  const konu=document.getElementById('sendmsg-konu').value;
+  if(!text){toast('Mesaj boş olamaz!','ts-e');return;}
+  if(!S.messages) S.messages=[];
+  S.messages.push({id:Date.now(), uid, konu, text, date:new Date().toLocaleString('tr-TR'), read:false, reply:''});
+  await save(); closeModal('mo-send-msg');
+  toast('Mesajınız yöneticiye iletildi ✓','ts-s');
+  // Unread badge güncelle
+  const unread=(S.messages||[]).filter(m=>!m.read).length;
+  const badge=document.getElementById('msg-badge');
+  if(badge){badge.textContent=unread;badge.style.display=unread?'inline':'none';}
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESİM ÖNİZLEME
+// ═══════════════════════════════════════════════════════════════
+function openImgPreview(src, caption) {
+  if(!src||src.length<10) return;
+  document.getElementById('preview-img-src').src=src;
+  document.getElementById('preview-img-cap').textContent=caption||'';
+  document.getElementById('mo-img-preview').classList.add('open');
 }
 
 // ─────────────────────────────────────────────
