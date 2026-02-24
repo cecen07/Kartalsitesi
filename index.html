@@ -3972,6 +3972,7 @@ async function resChangePw(uid) {
 }
 
 
+function renderResGaleri() {
   const items=(S.galeri||[]).slice().reverse();
   if(!items.length) return `<div class="res-section"><div class="empty"><div class="ei">🖼</div><p>Henüz galeri fotoğrafı yok</p></div></div>`;
   let h=`<div class="res-section"><div class="res-section-hdr"><h3>🖼 Site Galerisi</h3></div>
