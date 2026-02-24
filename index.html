@@ -52,8 +52,13 @@ function firebaseAvailable() {
   --sh:0 2px 16px rgba(30,34,51,.12);
   --bg-grad1:rgba(37,99,235,.04);--bg-grad2:rgba(124,58,237,.03);
 }
-/* Tema geçiş animasyonu */
-*{transition:background-color .25s,border-color .25s,color .15s}
+/* Tema geçiş animasyonu - sadece arka plan ve renkler */
+body,
+.site-header,.main-tabs,.mc,.sc,.ic,.as,.md,.mo,.login-box,.login-card,.res-hero,
+.res-sc,.btn,.pill,.tab-btn,.fc,.fs,.pav,.uav,.db-card,.iban-card,.res-iban-banner,
+.ic-card,.faz-card,.msg-card,.gal-item {
+  transition:background-color .22s,border-color .2s,color .15s,box-shadow .2s;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -366,6 +371,62 @@ select.fc option{background:var(--s3)}
 .exempt-tag{display:inline-flex;align-items:center;gap:4px;background:rgba(167,139,250,.15);color:var(--purple);border-radius:20px;padding:2px 8px;font-size:.65rem;font-weight:700}
 /* Hero görsel */
 .site-hero-banner{width:100%;height:180px;object-fit:cover;border-radius:var(--r);margin-bottom:14px;display:block}
+/* ── IBAN ÖDEME KARTI ── */
+.iban-card{background:linear-gradient(135deg,var(--accent) 0%,#7c3aed 100%);border-radius:var(--r);padding:20px 22px;color:#fff;position:relative;overflow:hidden;margin-bottom:10px}
+.iban-card::before{content:'';position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07)}
+.iban-card::after{content:'';position:absolute;left:-20px;bottom:-40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.05)}
+.iban-card-bank{font-size:.7rem;font-weight:700;letter-spacing:1px;opacity:.8;text-transform:uppercase;margin-bottom:4px}
+.iban-card-num{font-family:monospace;font-size:1.05rem;font-weight:700;letter-spacing:2px;margin:6px 0;word-break:break-all;line-height:1.4}
+.iban-card-name{font-size:.78rem;opacity:.85;margin-top:2px}
+.iban-card-copy{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.18);border:none;color:#fff;padding:5px 10px;border-radius:6px;font-size:.7rem;cursor:pointer;font-weight:600;transition:background .15s;z-index:2}
+.iban-card-copy:hover{background:rgba(255,255,255,.3)}
+/* Login ekranı IBAN bölümü */
+.login-iban-section{margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}
+.login-iban-title{font-size:.72rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;display:flex;align-items:center;gap:5px}
+/* Sakin görünümü IBAN banner */
+.res-iban-banner{background:linear-gradient(135deg,rgba(79,142,247,.12) 0%,rgba(124,58,237,.1) 100%);border:1px solid rgba(79,142,247,.25);border-radius:var(--rs);padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.res-iban-label{font-size:.68rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px}
+.res-iban-num{font-family:monospace;font-size:.9rem;font-weight:700;color:var(--accent);letter-spacing:1.5px;margin:2px 0}
+.res-iban-bank{font-size:.7rem;color:var(--t2)}
+/* ── GÜVENLİK ── */
+.sec-lockout{position:fixed;inset:0;background:rgba(12,14,22,.97);z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center;padding:24px}
+.sec-lockout-icon{font-size:3rem;animation:pulse 1.5s infinite}
+.sec-lockout h2{font-size:1.1rem;color:var(--red)}
+.sec-lockout p{font-size:.8rem;color:var(--t2);max-width:320px;line-height:1.6}
+.sec-lockout .countdown{font-size:2rem;font-weight:700;color:var(--red);font-family:monospace}
+.attempt-indicator{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.attempt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .2s}
+.attempt-dot.used{background:var(--red)}
+.session-bar{background:var(--s3);border-bottom:1px solid var(--border);padding:3px 16px;font-size:.65rem;color:var(--t3);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.session-bar span{display:flex;align-items:center;gap:4px}
+.sec-badge{display:inline-flex;align-items:center;gap:3px;background:rgba(62,207,142,.1);color:var(--green);border:1px solid rgba(62,207,142,.2);border-radius:20px;padding:1px 7px;font-size:.6rem;font-weight:700}
+.sec-badge.warn{background:rgba(247,201,79,.1);color:var(--a2);border-color:rgba(247,201,79,.2)}
+.sec-badge.danger{background:rgba(247,111,111,.1);color:var(--red);border-color:rgba(247,111,111,.2)}
+/* ── SAKİN PROFİL SAYFASI ── */
+.rp-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.rp-card-hdr{padding:14px 18px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rp-card-title{font-size:.8rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
+.rp-card-body{padding:14px 18px}
+.rp-avatar-wrap{display:flex;align-items:center;gap:18px;padding:18px;background:linear-gradient(135deg,var(--s2),var(--s3));border-bottom:1px solid var(--border)}
+.rp-avatar{width:88px;height:88px;border-radius:50%;border:3px solid var(--accent);overflow:hidden;flex-shrink:0;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:2rem;cursor:pointer;position:relative}
+.rp-avatar:hover::after{content:'📷';position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:1.4rem}
+.rp-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.rp-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:3px}
+.rp-meta{font-size:.75rem;color:var(--t2);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rp-field{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.rp-field:last-child{border-bottom:none}
+.rp-field-icon{width:32px;height:32px;border-radius:8px;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.rp-field-label{font-size:.68rem;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.3px;margin-bottom:1px}
+.rp-field-val{font-size:.85rem;color:var(--text);font-weight:500}
+.rp-field-empty{color:var(--t3);font-style:italic;font-size:.8rem}
+.rp-edit-inline{display:none;flex:1}
+.rp-field.editing .rp-field-val,.rp-field.editing .rp-field-empty{display:none}
+.rp-field.editing .rp-edit-inline{display:flex;gap:6px;align-items:center}
+.rp-edit-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--t3);padding:3px 9px;font-size:.68rem;cursor:pointer;transition:all .15s;white-space:nowrap}
+.rp-edit-btn:hover{border-color:var(--accent);color:var(--accent)}
+.rp-save-btn{background:var(--accent);border:none;border-radius:6px;color:#fff;padding:4px 10px;font-size:.68rem;cursor:pointer;font-weight:600}
+.rp-cancel-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--t2);padding:4px 8px;font-size:.68rem;cursor:pointer}
+.rp-pw-section{background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:14px;margin-top:4px}
 /* MOBILE */
 .mob-cards{display:none}
 .muc{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:7px;overflow:hidden}
@@ -516,6 +577,7 @@ select.fc option{background:var(--s3)}
         <h2>Yönetici Girişi</h2>
         <div class="lsub">Yönetim paneline erişmek için giriş yapın</div>
         <div class="login-err" id="adm-err">Kullanıcı adı veya şifre hatalı.</div>
+        <div id="adm-attempt-dots" class="attempt-indicator" style="display:none"></div>
         <div class="fg"><label class="fl">Kullanıcı Adı</label><input class="fc" id="adm-user" placeholder="admin" autocomplete="username"></div>
         <div class="fg"><label class="fl">Şifre</label><input class="fc" type="password" id="adm-pass" placeholder="••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
         <button class="btn bp" style="width:100%;justify-content:center;margin-top:4px" onclick="doAdminLogin()">Giriş Yap →</button>
@@ -525,10 +587,16 @@ select.fc option{background:var(--s3)}
         <h2>Sakin Girişi</h2>
         <div class="lsub">Dairenizin numarasını seçin ve şifrenizi girin</div>
         <div class="login-err" id="res-err">Daire numarası veya şifre hatalı.</div>
+        <div id="res-attempt-dots" class="attempt-indicator" style="display:none"></div>
         <div class="fg"><label class="fl">Daire / Dükkan</label><select class="fc" id="res-uid"><option value="">Seçin...</option></select></div>
         <div class="fg"><label class="fl">Şifre</label><input class="fc" type="password" id="res-pass" placeholder="••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doResLogin()"></div>
         <button class="btn bp" style="width:100%;justify-content:center;margin-top:4px" onclick="doResLogin()">Giriş Yap →</button>
         <div class="login-footer">Şifrenizi bilmiyorsanız yöneticinizle iletişime geçin.</div>
+      </div>
+      <!-- IBAN Bilgisi - login ekranında herkes görebilir -->
+      <div class="login-iban-section" id="login-iban-section" style="display:none">
+        <div class="login-iban-title">🏦 Aidat Ödeme Bilgileri</div>
+        <div id="login-iban-list"></div>
       </div>
     </div>
   </div>
@@ -554,6 +622,12 @@ select.fc option{background:var(--s3)}
 
 <!-- ══════════ ADMIN VIEW ══════════ -->
 <div id="admin-view" style="display:none">
+<div id="session-bar" class="session-bar">
+  <span>🔐 <strong>Yönetici</strong> oturumu</span>
+  <span id="session-time-left">⏱ —</span>
+  <span id="session-ip-info"></span>
+  <span style="margin-left:auto"><span class="sec-badge" id="sec-mode-badge">🔒 Güvenli</span></span>
+</div>
 <header class="site-header">
   <div class="hdr">
     <div class="site-logo">
@@ -880,6 +954,21 @@ select.fc option{background:var(--s3)}
     </div>
 
     <div class="as">
+      <h3>🏦 Aidat IBAN Bilgileri</h3>
+      <p style="font-size:.73rem;color:var(--t3);margin-bottom:14px;">Sakinlerin aidat ödemesi için kullanacağı banka hesap numaraları. Login ekranında ve sakin görünümünde gösterilir.</p>
+      <div id="site-iban-list" style="margin-bottom:12px"></div>
+      <div style="background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:14px">
+        <div style="font-size:.75rem;font-weight:700;color:var(--t2);margin-bottom:10px">+ Yeni IBAN Ekle</div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;align-items:end">
+          <div><label class="fl">IBAN Numarası</label><input class="fc" id="new-iban-num" placeholder="TR00 0000 0000 0000 0000 0000 00" style="font-family:monospace;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"></div>
+          <div><label class="fl">Banka Adı</label><input class="fc" id="new-iban-bank" placeholder="Ziraat Bankası"></div>
+          <div><label class="fl">Hesap Adı</label><input class="fc" id="new-iban-ad" placeholder="Kartal Sitesi A-Blok"></div>
+          <div><label class="fl">&nbsp;</label><button class="btn bg bsm" style="width:100%" onclick="addSiteIban()">+ Ekle</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="as">
       <h3>💳 Aidat Tarifeleri</h3>
       <div id="periods-list"></div>
       <div class="apr" style="margin-top:12px;">
@@ -898,7 +987,11 @@ select.fc option{background:var(--s3)}
         <div style="font-size:.78rem;font-weight:700;color:var(--t2);margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px">🔑 Yönetici Hesabı</div>
         <div class="fg2">
           <div class="fg"><label class="fl">Kullanıcı Adı</label><input class="fc" id="pw-adm-user" placeholder="admin"></div>
-          <div class="fg"><label class="fl">Yeni Şifre</label><input class="fc" type="password" id="pw-adm-pass" placeholder="••••••"></div>
+          <div class="fg">
+            <label class="fl">Yeni Şifre</label>
+            <input class="fc" type="password" id="pw-adm-pass" placeholder="••••••" oninput="checkPwStrength(this.value,'pw-adm-strength')">
+            <div id="pw-adm-strength" style="margin-top:5px;font-size:.68rem;height:16px"></div>
+          </div>
         </div>
         <button class="btn bp bsm" onclick="saveAdminPw()">💾 Yönetici Şifresini Kaydet</button>
       </div>
@@ -954,6 +1047,8 @@ select.fc option{background:var(--s3)}
         <button class="btn bsm" id="pm-kart" style="flex:1;justify-content:center"
           onclick="selectPayMethod('kart')">💳 Kart</button>
       </div>
+      <!-- Havale seçilince site IBAN'ları göster -->
+      <div id="mo-iban-hint" style="display:none;background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:8px 10px;margin-top:7px;font-size:.75rem"></div>
     </div>
     <input type="hidden" id="mo-paymethod" value="nakit">
 
@@ -1008,6 +1103,7 @@ select.fc option{background:var(--s3)}
 <div class="mo" id="mo-profil">
   <div class="md lg">
     <div class="mh"><h3 id="mo-p-t">Birim Profili</h3><p id="mo-p-s">Sakin bilgilerini düzenle</p></div>
+    <!-- Fotoğraf -->
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)">
       <div id="pav-prev" class="pav" style="width:72px;height:72px;font-size:1.6rem;flex-shrink:0;cursor:pointer;overflow:hidden;border-radius:50%;border:2px solid var(--border)" onclick="document.getElementById('p-foto-file').click()">🏠</div>
       <div style="flex:1">
@@ -1025,23 +1121,30 @@ select.fc option{background:var(--s3)}
       </div>
     </div>
     <input type="hidden" id="p-id">
+    <input type="hidden" id="p-role-mode"> <!-- 'admin' veya 'resident' -->
+    <!-- Temel bilgiler (herkes düzenleyebilir) -->
     <div class="fg2">
       <div class="fg"><label class="fl">Ad</label><input type="text" class="fc" id="p-ad" placeholder="Ad"></div>
       <div class="fg"><label class="fl">Soyad</label><input type="text" class="fc" id="p-soyad" placeholder="Soyad"></div>
       <div class="fg"><label class="fl">Telefon</label><input type="text" class="fc" id="p-tel" placeholder="05xx xxx xx xx"></div>
       <div class="fg"><label class="fl">E-Posta</label><input type="text" class="fc" id="p-email" placeholder="ornek@mail.com"></div>
     </div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Oturum Tipi</label>
-        <select class="fc" id="p-tip">
-          <option value="ev_sahibi">🏠 Ev Sahibi</option>
-          <option value="kiraci">🔑 Kiracı</option>
-          <option value="bos">⬜ Boş</option>
-        </select>
+    <!-- Admin-only alanlar -->
+    <div id="p-admin-fields">
+      <div class="fg2">
+        <div class="fg"><label class="fl">Oturum Tipi</label>
+          <select class="fc" id="p-tip">
+            <option value="ev_sahibi">🏠 Ev Sahibi</option>
+            <option value="kiraci">🔑 Kiracı</option>
+            <option value="bos">⬜ Boş</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Taşınma Tarihi</label><input type="date" class="fc" id="p-tarih"></div>
       </div>
-      <div class="fg"><label class="fl">Taşınma Tarihi</label><input type="date" class="fc" id="p-tarih"></div>
     </div>
-    <div class="fg"><label class="fl">Not</label><textarea class="fc" id="p-not" rows="2" placeholder="Özel not..." style="resize:vertical"></textarea></div>
+    <div class="fg"><label class="fl">Not <span id="p-not-label" style="color:var(--t3);font-weight:400">(opsiyonel)</span></label>
+      <textarea class="fc" id="p-not" rows="2" placeholder="Özel not..." style="resize:vertical"></textarea>
+    </div>
     <div class="br2">
       <button class="btn bsec" onclick="closeModal('mo-profil')">İptal</button>
       <button class="btn bp" onclick="saveProfil()">💾 Kaydet</button>
@@ -1284,7 +1387,8 @@ const GCAT = ['Aidat','Kira Geliri','Bağış','Faiz','Diğer Gelir'];
 const RCAT = ['Elektrik','Su','Doğalgaz','Temizlik','Güvenlik','Asansör Bakım','Bahçe','Yönetim Gideri','Onarım/Tadilat','Sigorta','Diğer Gider'];
 
 const DEF = {
-  si: { siteAdi:'Kartal Sitesi', blok:'A-BLOK', adres:'Meltem Mah. Meltem Bulvarı No:8 Muratpaşa / Antalya', dc:32, sc:2 },
+  si: { siteAdi:'Kartal Sitesi', blok:'A-BLOK', adres:'Meltem Mah. Meltem Bulvarı No:8 Muratpaşa / Antalya', dc:32, sc:2,
+        ibanlar:[] /* [{iban:'TR...', banka:'Ziraat', ad:'Kartal Sitesi A-Blok'}] */ },
   periods: [
     {id:0,s:'2024-01',e:'2024-12',a:300},
     {id:1,s:'2025-01',e:'2025-05',a:300},
@@ -2469,6 +2573,28 @@ function selectPayMethod(method) {
     btn.style.border=m===method?'1px solid var(--accent)':'1px solid var(--border)';
     btn.style.color=m===method?'var(--accent)':'var(--t2)';
   });
+  // Havale seçilince IBAN bilgisi göster
+  const ibanHint = document.getElementById('mo-iban-hint');
+  if(ibanHint) {
+    if(method==='havale') {
+      const ibanlar = S.si?.ibanlar||[];
+      if(ibanlar.length) {
+        ibanHint.innerHTML = ibanlar.map(item=>`
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)">
+            <div>
+              <div style="font-size:.62rem;color:var(--t3)">${item.banka||''} · ${item.ad||''}</div>
+              <div style="font-family:monospace;font-size:.82rem;color:var(--accent);font-weight:700">${formatIbanDisplay(item.iban)}</div>
+            </div>
+            <button onclick="copyIban('${item.iban}',this)" style="background:var(--s3);border:1px solid var(--border);color:var(--t2);padding:3px 8px;border-radius:5px;font-size:.62rem;cursor:pointer">📋</button>
+          </div>`).join('');
+        ibanHint.style.display='block';
+      } else {
+        ibanHint.style.display='none';
+      }
+    } else {
+      ibanHint.style.display='none';
+    }
+  }
 }
 
 function setTodayDate() {
@@ -2478,6 +2604,7 @@ function setTodayDate() {
 function toggleAmt() { /* legacy - artık kullanılmıyor, setAidatStatus kullanıyor */ }
 
 async function saveAidat() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const {uid,mi}=MAI;
   const status=document.getElementById('mo-status').value;
   const t=getTutar(CY,mi);
@@ -2542,10 +2669,10 @@ function renderProfiller() {
         </div>
       </div>
       <div class="pcb">
-        ${u.tel?`<div class="pd"><span>📞</span>${u.tel}</div>`:''}
-        ${u.email?`<div class="pd"><span>✉️</span>${u.email}</div>`:''}
+        ${u.tel?`<div class="pd"><span>📞</span>${esc(u.tel)}</div>`:''}
+        ${u.email?`<div class="pd"><span>✉️</span>${esc(u.email)}</div>`:''}
         ${u.tarih?`<div class="pd"><span>📅</span>Taşınma: ${u.tarih}</div>`:''}
-        ${u.not?`<div class="pd"><span>📝</span>${u.not}</div>`:''}
+        ${u.not?`<div class="pd"><span>📝</span>${esc(u.not)}</div>`:''}
         ${!exempt?`<div style="margin-top:9px">
           <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--t3);margin-bottom:3px">
             <span>${CY} Tahsilat</span><span style="color:${pc};font-weight:700">%${pct}</span>
@@ -2565,11 +2692,15 @@ function renderProfiller() {
   g.innerHTML=h;
 }
 
-function openPM(uid) {
+function openPM(uid, roleMode) {
   const u=S.units[uid]||{};
+  const mode = roleMode || (currentUser?.role==='admin' ? 'admin' : 'resident');
   document.getElementById('p-id').value=uid;
-  document.getElementById('mo-p-t').textContent=`${uid} Profili`;
-  document.getElementById('mo-p-s').textContent=uid.startsWith('D')?'Daire bilgileri':'Dükkan bilgileri';
+  document.getElementById('p-role-mode').value=mode;
+  document.getElementById('mo-p-t').textContent= mode==='admin' ? `${uid} Profili` : 'Profilimi Düzenle';
+  document.getElementById('mo-p-s').textContent= mode==='admin'
+    ? (uid.startsWith('D')?'Daire bilgileri':'Dükkan bilgileri')
+    : `${uid} · Kişisel bilgilerinizi güncelleyin`;
   document.getElementById('p-ad').value=u.ad||'';
   document.getElementById('p-soyad').value=u.soyad||'';
   document.getElementById('p-tel').value=u.tel||'';
@@ -2578,6 +2709,9 @@ function openPM(uid) {
   document.getElementById('p-tarih').value=u.tarih||'';
   document.getElementById('p-not').value=u.not||'';
   document.getElementById('p-foto').value=u.foto||'';
+  // Admin-only alanları sakın görünümünde gizle
+  const adminFields = document.getElementById('p-admin-fields');
+  if(adminFields) adminFields.style.display = mode==='admin' ? '' : 'none';
   updatePrev();
   document.getElementById('mo-profil').classList.add('open');
 }
@@ -2616,19 +2750,31 @@ function clearProfilePhoto() {
 }
 
 async function saveProfil() {
-  const uid=document.getElementById('p-id').value;
+  const isAdmin = currentUser?.role==='admin';
+  const uid = document.getElementById('p-id').value;
+  // Sakin sadece kendi profilini düzenleyebilir; admin her şeyi
+  if(!currentUser){toast('⛔ Giriş gerekli!','ts-e');return;}
+  if(!isAdmin && currentUser.uid!==uid){toast('⛔ Yetki yok!','ts-e');return;}
+
   if(!S.units[uid]) S.units[uid]={};
-  S.units[uid]={...S.units[uid],
-    ad:document.getElementById('p-ad').value.trim(),
-    soyad:document.getElementById('p-soyad').value.trim(),
-    tel:document.getElementById('p-tel').value.trim(),
-    email:document.getElementById('p-email').value.trim(),
-    tip:document.getElementById('p-tip').value,
-    tarih:document.getElementById('p-tarih').value,
-    not:document.getElementById('p-not').value.trim(),
-    foto:document.getElementById('p-foto').value.trim()
+  const base = {
+    ad:    validateInput(document.getElementById('p-ad').value,'text',50),
+    soyad: validateInput(document.getElementById('p-soyad').value,'text',50),
+    tel:   validateInput(document.getElementById('p-tel').value,'tel',20),
+    email: validateInput(document.getElementById('p-email').value,'email',80),
+    not:   validateInput(document.getElementById('p-not').value,'text',300),
+    foto:  document.getElementById('p-foto').value.trim(),
   };
-  await save(); closeModal('mo-profil'); renderProfiller(); rAidat();
+  if(isAdmin) {
+    // Admin-only alanlar
+    base.tip   = document.getElementById('p-tip').value;
+    base.tarih = document.getElementById('p-tarih').value;
+  }
+  S.units[uid] = {...S.units[uid], ...base};
+  await save();
+  closeModal('mo-profil');
+  if(isAdmin) { renderProfiller(); rAidat(); }
+  else { resTab='profil'; renderResidentDashboard(uid); }
   toast('Profil kaydedildi ✓','ts-s');
 }
 
@@ -2675,15 +2821,26 @@ function clearGGFatura() {
 }
 
 async function saveGG() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const amt=parseFloat(document.getElementById('gg-amt2').value);
   if(!amt||amt<=0){toast('Geçerli tutar girin!','ts-e');return;}
   const fatura=document.getElementById('gg-fatura-data').value||'';
-  S.ggk.unshift({id:Date.now(),type:document.getElementById('gg-type').value,date:document.getElementById('gg-date').value,cat:document.getElementById('gg-cat').value,desc:document.getElementById('gg-desc').value.trim(),amount:amt,fatura});
+  const rec = sanitizeGGRecord({
+    id:Date.now(),
+    type:document.getElementById('gg-type').value,
+    date:document.getElementById('gg-date').value,
+    cat:document.getElementById('gg-cat').value,
+    desc:document.getElementById('gg-desc').value.trim(),
+    amount:amt,
+    fatura
+  });
+  S.ggk.unshift(rec);
   await save(); closeModal('mo-gg'); renderGG(); rDash();
   toast('Kayıt eklendi ✓','ts-s');
 }
 
 async function delGG(id) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   S.ggk=S.ggk.filter(r=>r.id!==id);
   await save(); renderGG(); rDash();
   toast('Kayıt silindi','ts-i');
@@ -2716,7 +2873,7 @@ function renderGG() {
   else filtered.forEach(x=>{
     const c=x.type==='gelir'?'var(--green)':'var(--red)';
     const faturaBtn=x.fatura?`<span class="gg-fatura-ph" style="width:28px;height:28px;font-size:.85rem;margin-right:6px" onclick="openImgPreview('${x.fatura.length>200?x.fatura:''}','Fatura')" title="Faturayı görüntüle">🧾</span>`:'';
-    h+=`<tr><td style="white-space:nowrap;color:var(--t2)">${x.date||'—'}</td><td><span class="tbgg tbgg-${x.type==='gelir'?'g':'r'}">${x.type==='gelir'?'GELİR':'GİDER'}</span></td><td style="color:var(--t2)">${x.cat||'—'}</td><td>${x.desc||'—'}</td><td style="text-align:right;font-weight:700;color:${c}">${faturaBtn}${fmt(x.amount)}</td><td><button class="delbtn" onclick="delGG(${x.id})">✕</button></td></tr>`;
+    h+=`<tr><td style="white-space:nowrap;color:var(--t2)">${esc(x.date)||'—'}</td><td><span class="tbgg tbgg-${x.type==='gelir'?'g':'r'}">${x.type==='gelir'?'GELİR':'GİDER'}</span></td><td style="color:var(--t2)">${esc(x.cat)||'—'}</td><td>${esc(x.desc)||'—'}</td><td style="text-align:right;font-weight:700;color:${c}">${faturaBtn}${fmt(x.amount)}</td><td><button class="delbtn" onclick="delGG(${x.id})">✕</button></td></tr>`;
   });
   document.getElementById('gg-body').innerHTML=h;
 }
@@ -2786,14 +2943,106 @@ function rAdmin() {
 
   // Firebase durum
   updateFbAdminStatus();
+
+  // Site IBAN listesi
+  renderSiteIbanList();
 }
 
 async function saveSiteInfo() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const nd=parseInt(document.getElementById('a-dc').value)||32;
   const ns=parseInt(document.getElementById('a-sc').value)||0;
-  S.si={siteAdi:document.getElementById('a-adi').value.trim(),blok:document.getElementById('a-blok').value.trim(),adres:document.getElementById('a-adres').value.trim(),dc:nd,sc:ns};
+  S.si={
+    ...S.si,
+    siteAdi: validateInput(document.getElementById('a-adi').value,'text',80),
+    blok:    validateInput(document.getElementById('a-blok').value,'text',20),
+    adres:   validateInput(document.getElementById('a-adres').value,'text',200),
+    dc:nd, sc:ns
+  };
   ensureUnits(); await save(); updateHdr(); rAdmin();
   toast('Site bilgileri kaydedildi ✓','ts-s');
+}
+
+// ── Site IBAN Yönetimi ──
+function renderSiteIbanList() {
+  const ibanlar = S.si?.ibanlar||[];
+  const el = document.getElementById('site-iban-list');
+  if(!el) return;
+  if(!ibanlar.length){
+    el.innerHTML=`<p style="font-size:.75rem;color:var(--t3);margin-bottom:4px">Henüz IBAN eklenmedi.</p>`;
+    return;
+  }
+  el.innerHTML=ibanlar.map((item,i)=>`
+    <div class="iban-card" style="margin-bottom:10px">
+      <div class="iban-card-bank">${item.banka||'Banka'}</div>
+      <div class="iban-card-num">${formatIbanDisplay(item.iban)}</div>
+      <div class="iban-card-name">${item.ad||''}</div>
+      <button class="iban-card-copy" onclick="copyIban('${item.iban}',this)">📋 Kopyala</button>
+      <button onclick="delSiteIban(${i})" style="position:absolute;bottom:12px;right:14px;background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 9px;border-radius:6px;font-size:.65rem;cursor:pointer;z-index:2">✕ Sil</button>
+    </div>`).join('');
+}
+
+async function addSiteIban() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
+  const raw = validateInput(document.getElementById('new-iban-num').value,'iban',32).replace(/\s/g,'');
+  const banka = document.getElementById('new-iban-bank').value.trim();
+  const ad = document.getElementById('new-iban-ad').value.trim();
+  if(!raw || raw.length < 15){toast('Geçerli bir IBAN girin!','ts-e');return;}
+  if(!S.si.ibanlar) S.si.ibanlar=[];
+  S.si.ibanlar.push({iban:raw, banka, ad});
+  await save();
+  document.getElementById('new-iban-num').value='';
+  document.getElementById('new-iban-bank').value='';
+  document.getElementById('new-iban-ad').value='';
+  renderSiteIbanList();
+  renderLoginIban();
+  toast('IBAN eklendi ✓','ts-s');
+}
+
+async function delSiteIban(i) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
+  S.si.ibanlar.splice(i,1);
+  await save(); renderSiteIbanList(); renderLoginIban();
+  toast('IBAN silindi','ts-i');
+}
+
+function formatIbanDisplay(iban) {
+  // TR00 0000 0000 0000 0000 0000 00 formatı
+  return (iban||'').replace(/(.{4})/g,'$1 ').trim();
+}
+
+function copyIban(iban, btn) {
+  navigator.clipboard?.writeText(iban).then(()=>{
+    const orig = btn.textContent;
+    btn.textContent='✅ Kopyalandı';
+    setTimeout(()=>btn.textContent=orig, 1800);
+  }).catch(()=>{
+    // fallback
+    const ta=document.createElement('textarea');
+    ta.value=iban; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    const orig=btn.textContent; btn.textContent='✅ Kopyalandı';
+    setTimeout(()=>btn.textContent=orig,1800);
+  });
+  toast('IBAN panoya kopyalandı ✓','ts-s');
+}
+
+// Login ekranında IBAN göster
+function renderLoginIban() {
+  const ibanlar = S.si?.ibanlar||[];
+  const section = document.getElementById('login-iban-section');
+  const list = document.getElementById('login-iban-list');
+  if(!section||!list) return;
+  if(!ibanlar.length){section.style.display='none';return;}
+  section.style.display='block';
+  list.innerHTML=ibanlar.map(item=>`
+    <div style="background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:11px 13px;margin-bottom:7px;position:relative">
+      <div style="font-size:.65rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px">${item.banka||'Banka'}</div>
+      <div style="font-family:monospace;font-size:.92rem;font-weight:700;color:var(--accent);letter-spacing:1.5px;margin:3px 0">${formatIbanDisplay(item.iban)}</div>
+      <div style="font-size:.7rem;color:var(--t2)">${item.ad||''}</div>
+      <button onclick="copyIban('${item.iban}',this)" style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:var(--s2);border:1px solid var(--border);color:var(--t2);padding:4px 9px;border-radius:6px;font-size:.65rem;cursor:pointer">📋 Kopyala</button>
+    </div>`).join('');
 }
 
 function updateHdr() {
@@ -3018,9 +3267,245 @@ function scrollU(uid) {
   });
 }
 
-// ─────────────────────────────────────────────
-// AUTH
-// ─────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
+// GÜVENLİK KATMANI
+// ═══════════════════════════════════════════════════════════════
+
+// ── XSS Koruma ──
+function esc(str) {
+  if(str===null||str===undefined) return '';
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#x27;')
+    .replace(/\//g,'&#x2F;');
+}
+
+// ── Giriş Doğrulama ──
+function validateInput(val, type='text', maxLen=200) {
+  if(typeof val !== 'string') val = String(val||'');
+  val = val.trim();
+  if(val.length > maxLen) val = val.slice(0, maxLen);
+  if(type==='iban') {
+    val = val.replace(/[^A-Z0-9\s]/g,'').toUpperCase();
+  } else if(type==='number') {
+    val = val.replace(/[^0-9.,]/g,'');
+  } else if(type==='tel') {
+    val = val.replace(/[^0-9\s\+\-\(\)]/g,'');
+  } else if(type==='email') {
+    val = val.replace(/[<>"'\/\\]/g,'');
+  }
+  return val;
+}
+
+// ── Brute-Force Koruması ──
+const SEC = {
+  MAX_ATTEMPTS: 5,         // maksimum hatalı giriş
+  LOCKOUT_SECONDS: 120,    // kilitleme süresi (saniye)
+  SESSION_MINUTES: 60,     // oturum süresi (dakika)
+  adminAttempts: 0,
+  resAttempts: 0,
+  adminLockedUntil: 0,
+  resLockedUntil: 0,
+  sessionStart: 0,
+  sessionTimer: null,
+  inactivityTimer: null,
+  INACTIVITY_MINUTES: 30,  // hareketsizlik oturumu kapatma
+};
+
+function getRemainingLockout(until) {
+  return Math.max(0, Math.ceil((until - Date.now()) / 1000));
+}
+
+function isLocked(role) {
+  if(role==='admin') return Date.now() < SEC.adminLockedUntil;
+  return Date.now() < SEC.resLockedUntil;
+}
+
+function recordFailedAttempt(role) {
+  if(role==='admin') {
+    SEC.adminAttempts++;
+    if(SEC.adminAttempts >= SEC.MAX_ATTEMPTS) {
+      SEC.adminLockedUntil = Date.now() + SEC.LOCKOUT_SECONDS * 1000;
+      showLockoutScreen('admin', SEC.LOCKOUT_SECONDS);
+    }
+  } else {
+    SEC.resAttempts++;
+    if(SEC.resAttempts >= SEC.MAX_ATTEMPTS) {
+      SEC.resLockedUntil = Date.now() + SEC.LOCKOUT_SECONDS * 1000;
+      showLockoutScreen('resident', SEC.LOCKOUT_SECONDS);
+    }
+  }
+  updateAttemptDots(role);
+}
+
+function resetAttempts(role) {
+  if(role==='admin') SEC.adminAttempts=0;
+  else SEC.resAttempts=0;
+}
+
+function updateAttemptDots(role) {
+  const attempts = role==='admin' ? SEC.adminAttempts : SEC.resAttempts;
+  const prefix = role==='admin' ? 'adm' : 'res';
+  const container = document.getElementById(`${prefix}-attempt-dots`);
+  if(!container) return;
+  container.innerHTML = Array.from({length:SEC.MAX_ATTEMPTS},(_,i)=>
+    `<div class="attempt-dot ${i<attempts?'used':''}"></div>`).join('');
+  container.style.display = attempts > 0 ? 'flex' : 'none';
+}
+
+function showLockoutScreen(role, secs) {
+  let remaining = secs;
+  const div = document.createElement('div');
+  div.className='sec-lockout'; div.id='lockout-overlay';
+  div.innerHTML=`
+    <div class="sec-lockout-icon">🔒</div>
+    <h2>Geçici Erişim Engeli</h2>
+    <p>${SEC.MAX_ATTEMPTS} hatalı giriş denemesi yapıldı.<br>Güvenlik nedeniyle giriş geçici olarak kilitlendi.</p>
+    <div class="countdown" id="lockout-countdown">${remaining}</div>
+    <p style="font-size:.72rem">Süre dolduğunda tekrar deneyebilirsiniz.</p>`;
+  document.body.appendChild(div);
+  const iv = setInterval(()=>{
+    remaining--;
+    const el=document.getElementById('lockout-countdown');
+    if(el) el.textContent=remaining;
+    if(remaining<=0){
+      clearInterval(iv);
+      div.remove();
+      if(role==='admin') SEC.adminAttempts=0;
+      else SEC.resAttempts=0;
+      updateAttemptDots(role);
+    }
+  },1000);
+}
+
+// ── Oturum Yönetimi ──
+function startSession(role) {
+  SEC.sessionStart = Date.now();
+  clearInterval(SEC.sessionTimer);
+  clearTimeout(SEC.inactivityTimer);
+
+  // Oturum süresi geri sayımı
+  SEC.sessionTimer = setInterval(()=>{
+    const elapsed = Math.floor((Date.now()-SEC.sessionStart)/1000);
+    const total = SEC.SESSION_MINUTES*60;
+    const left = total - elapsed;
+    if(left <= 0) { expireSession('Oturum süresi doldu.'); return; }
+    const m = Math.floor(left/60), s = left%60;
+    const el = document.getElementById('session-time-left');
+    if(el) {
+      el.textContent = `⏱ ${m}:${String(s).padStart(2,'0')} kaldı`;
+      el.style.color = left < 300 ? 'var(--red)' : 'var(--t3)'; // 5 dakika kala uyar
+    }
+  }, 1000);
+
+  // Hareketsizlik tespiti
+  resetInactivityTimer();
+  ['click','keydown','mousemove','touchstart'].forEach(ev=>{
+    document.addEventListener(ev, resetInactivityTimer, {passive:true});
+  });
+}
+
+function resetInactivityTimer() {
+  clearTimeout(SEC.inactivityTimer);
+  SEC.inactivityTimer = setTimeout(()=>{
+    expireSession(`${SEC.INACTIVITY_MINUTES} dakika hareketsizlik — oturum kapatıldı.`);
+  }, SEC.INACTIVITY_MINUTES * 60 * 1000);
+}
+
+function expireSession(reason) {
+  clearInterval(SEC.sessionTimer);
+  clearTimeout(SEC.inactivityTimer);
+  const msg = reason||'Oturum süresi doldu.';
+  doLogout();
+  setTimeout(()=>toast(`⏱ ${msg}`,'ts-i'), 300);
+}
+
+function stopSession() {
+  clearInterval(SEC.sessionTimer);
+  clearTimeout(SEC.inactivityTimer);
+  ['click','keydown','mousemove','touchstart'].forEach(ev=>{
+    document.removeEventListener(ev, resetInactivityTimer);
+  });
+}
+
+// ── Yetki Kontrolü (Guard) ──
+function requireAdmin(fn) {
+  return function(...args) {
+    if(!currentUser || currentUser.role!=='admin') {
+      toast('⛔ Bu işlem için yönetici yetkisi gerekli!','ts-e');
+      console.warn('[SEC] Yetkisiz admin erişimi engellendi:', fn.name);
+      return;
+    }
+    return fn(...args);
+  };
+}
+
+function requireAuth(fn) {
+  return function(...args) {
+    if(!currentUser) {
+      toast('⛔ Bu işlem için giriş yapmanız gerekli!','ts-e');
+      console.warn('[SEC] Yetkisiz erişim engellendi:', fn.name);
+      return;
+    }
+    return fn(...args);
+  };
+}
+
+// Sakin, sadece kendi UID'sine erişebilir
+function requireOwnOrAdmin(uid, fn) {
+  return function(...args) {
+    if(!currentUser) { toast('⛔ Giriş gerekli!','ts-e'); return; }
+    if(currentUser.role!=='admin' && currentUser.uid!==uid) {
+      toast('⛔ Yalnızca kendi bilgilerinize erişebilirsiniz!','ts-e');
+      console.warn('[SEC] Başka kullanıcı verisine erişim engellendi. Talep:',uid,'Oturum:',currentUser.uid);
+      return;
+    }
+    return fn(...args);
+  };
+}
+
+// ── Veri Sanitizasyonu (Kayıt öncesi) ──
+function sanitizeUnit(u) {
+  return {
+    ...u,
+    ad:    validateInput(u.ad||'','text',50),
+    soyad: validateInput(u.soyad||'','text',50),
+    tel:   validateInput(u.tel||'','tel',20),
+    email: validateInput(u.email||'','email',80),
+    not:   validateInput(u.not||'','text',300),
+  };
+}
+
+function sanitizeGGRecord(r) {
+  return {
+    ...r,
+    desc: validateInput(r.desc||'','text',200),
+    cat:  validateInput(r.cat||'','text',50),
+  };
+}
+
+function sanitizeMessage(m) {
+  return {
+    ...m,
+    text:  validateInput(m.text||'','text',500),
+    konu:  validateInput(m.konu||'','text',60),
+    reply: validateInput(m.reply||'','text',500),
+  };
+}
+
+function sanitizeIcraat(ic) {
+  return {
+    ...ic,
+    title: validateInput(ic.title||'','text',100),
+    desc:  validateInput(ic.desc||'','text',600),
+    cat:   validateInput(ic.cat||'','text',50),
+  };
+}
+
+// ── Session State ──
 let currentUser = null; // {role:'admin'} or {role:'resident', uid:'D5'}
 
 function setLoginTab(tab, el) {
@@ -3028,7 +3513,6 @@ function setLoginTab(tab, el) {
   el.classList.add('active');
   document.getElementById('lt-admin').style.display = tab==='admin'?'block':'none';
   document.getElementById('lt-resident').style.display = tab==='resident'?'block':'none';
-  // Populate resident unit dropdown
   if(tab==='resident') populateResDropdown();
 }
 
@@ -3046,39 +3530,79 @@ function populateResDropdown() {
 }
 
 function doAdminLogin() {
-  const user = document.getElementById('adm-user').value.trim();
-  const pass = document.getElementById('adm-pass').value;
+  // Kilitli mi kontrol
+  if(isLocked('admin')) {
+    const rem = getRemainingLockout(SEC.adminLockedUntil);
+    document.getElementById('adm-err').textContent=`Hesap kilitli. ${rem} saniye bekleyin.`;
+    document.getElementById('adm-err').classList.add('show');
+    return;
+  }
+
+  const user = validateInput(document.getElementById('adm-user').value,'text',50);
+  const pass = document.getElementById('adm-pass').value; // şifreyi sanitize etme
   const creds = S.auth?.admin || {user:'admin', pass:'1234'};
   const err = document.getElementById('adm-err');
+
   if(user===creds.user && pass===creds.pass) {
     err.classList.remove('show');
-    currentUser = {role:'admin'};
+    resetAttempts('admin');
+    currentUser = {role:'admin', loginTime: Date.now()};
+    startSession('admin');
     showAdminView();
   } else {
+    recordFailedAttempt('admin');
+    const left = SEC.MAX_ATTEMPTS - SEC.adminAttempts;
+    err.textContent = left > 0
+      ? `Kullanıcı adı veya şifre hatalı. (${left} hak kaldı)`
+      : 'Çok fazla hatalı giriş. Lütfen bekleyin.';
     err.classList.add('show');
     document.getElementById('adm-pass').value='';
+    updateAttemptDots('admin');
   }
 }
 
 function doResLogin() {
+  // Kilitli mi kontrol
+  if(isLocked('resident')) {
+    const rem = getRemainingLockout(SEC.resLockedUntil);
+    document.getElementById('res-err').textContent=`Çok fazla hatalı giriş. ${rem} saniye bekleyin.`;
+    document.getElementById('res-err').classList.add('show');
+    return;
+  }
+
   const uid = document.getElementById('res-uid').value;
   const pass = document.getElementById('res-pass').value;
   const err = document.getElementById('res-err');
-  if(!uid){err.classList.add('show');return;}
+
+  if(!uid){err.textContent='Daire seçin.';err.classList.add('show');return;}
+
   const unitPass = S.units[uid]?.pass||'';
-  if(!unitPass){err.textContent='Bu daire için henüz şifre atanmamış.';err.classList.add('show');return;}
+  if(!unitPass){
+    err.textContent='Bu daire için henüz şifre atanmamış. Yöneticinize başvurun.';
+    err.classList.add('show');
+    return;
+  }
+
   if(pass===unitPass){
     err.classList.remove('show');
-    currentUser = {role:'resident', uid};
+    resetAttempts('resident');
+    currentUser = {role:'resident', uid, loginTime: Date.now()};
+    startSession('resident');
     showResidentView(uid);
   } else {
-    err.textContent='Daire numarası veya şifre hatalı.';
+    recordFailedAttempt('resident');
+    const left = SEC.MAX_ATTEMPTS - SEC.resAttempts;
+    err.textContent = left > 0
+      ? `Şifre hatalı. (${left} hak kaldı)`
+      : 'Çok fazla hatalı giriş. Lütfen bekleyin.';
     err.classList.add('show');
     document.getElementById('res-pass').value='';
+    updateAttemptDots('resident');
   }
 }
 
 function doLogout() {
+  stopSession();
   currentUser = null;
   document.getElementById('login-screen').style.display='flex';
   document.getElementById('admin-view').style.display='none';
@@ -3098,11 +3622,16 @@ function showAdminView() {
 }
 
 function showResidentView(uid) {
+  // Sakin kendi dairesini mi görüyor?
+  if(currentUser?.role==='resident' && currentUser.uid!==uid) {
+    console.warn('[SEC] Farklı UID erişimi engellendi');
+    return;
+  }
   document.getElementById('login-screen').style.display='none';
   document.getElementById('admin-view').style.display='none';
   document.getElementById('resident-view').style.display='block';
-  const si = S.siteInfo||S.si||{};
-  document.getElementById('rh-adi').innerHTML = `${si.siteAdi||'Kartal Sitesi'} <span class="badge">${si.blok||'A-BLOK'}</span>`;
+  const si = S.si||{};
+  document.getElementById('rh-adi').innerHTML = `${esc(si.siteAdi)||'Kartal Sitesi'} <span class="badge">${esc(si.blok)||'A-BLOK'}</span>`;
   document.getElementById('rh-adres').textContent = si.adres||'';
   document.getElementById('rh-pill').textContent = `🏠 ${uid} — ${fullName(uid)}`;
   renderResidentDashboard(uid);
@@ -3112,7 +3641,7 @@ function showResidentView(uid) {
 // RESIDENT DASHBOARD
 // ─────────────────────────────────────────────
 let resCY = 2025;
-let resTab = 'aidat'; // aktif sakin sekmesi
+let resTab = 'profil'; // aktif sakin sekmesi
 
 function renderResidentDashboard(uid) {
   const u = S.units[uid]||{};
@@ -3172,8 +3701,11 @@ function renderResidentDashboard(uid) {
     <div class="res-sc ry"><div class="res-sl">Kalan (${resCY})</div><div class="res-sv ry">${exempt?'Muaf':fmt(bek-ode)}</div><div class="res-ss">${exempt?'—':'Yıllık kalan'}</div></div>
   </div>
 
+  ${renderResIbanBanner()}
+
   <!-- Sakin Sekmeleri -->
   <div style="display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap">
+    <button class="ytab ${resTab==='profil'?'active':''}" onclick="setResTab('profil','${uid}',this)" style="border-radius:8px;padding:8px 14px">👤 Profilim</button>
     <button class="ytab ${resTab==='aidat'?'active':''}" onclick="setResTab('aidat','${uid}',this)" style="border-radius:8px;padding:8px 14px">💳 Ödemelerim</button>
     <button class="ytab ${resTab==='icraatlar'?'active':''}" onclick="setResTab('icraatlar','${uid}',this)" style="border-radius:8px;padding:8px 14px">🔨 Site İcraatları</button>
     <button class="ytab ${resTab==='galeri'?'active':''}" onclick="setResTab('galeri','${uid}',this)" style="border-radius:8px;padding:8px 14px">🖼 Galeri</button>
@@ -3188,7 +3720,26 @@ function renderResidentDashboard(uid) {
   document.getElementById('resident-main').innerHTML = h;
 }
 
+function renderResIbanBanner() {
+  const ibanlar = S.si?.ibanlar||[];
+  if(!ibanlar.length) return '';
+  const cards = ibanlar.map(item=>`
+    <div class="res-iban-banner">
+      <div>
+        <div class="res-iban-label">🏦 ${item.banka||'Aidat Hesabı'}</div>
+        <div class="res-iban-num">${formatIbanDisplay(item.iban)}</div>
+        <div class="res-iban-bank">${item.ad||''}</div>
+      </div>
+      <button onclick="copyIban('${item.iban}',this)" style="background:rgba(79,142,247,.15);border:1px solid rgba(79,142,247,.3);color:var(--accent);padding:7px 14px;border-radius:var(--rs);font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0">📋 Kopyala</button>
+    </div>`).join('');
+  return `<div style="margin-bottom:16px">
+    <div style="font-size:.68rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">💳 Aidat Ödeme Hesapları</div>
+    ${cards}
+  </div>`;
+}
+
 function renderResTabContent(uid) {
+  if(resTab==='profil') return renderResProfil(uid);
   if(resTab==='aidat') return renderResAidat(uid);
   if(resTab==='icraatlar') return renderResIcraatlar();
   if(resTab==='galeri') return renderResGaleri();
@@ -3197,7 +3748,230 @@ function renderResTabContent(uid) {
   return '';
 }
 
-function renderResGaleri() {
+// ─────────────────────────────────────────────────────
+// SAKİN PROFİL SEKMESİ
+// ─────────────────────────────────────────────────────
+function renderResProfil(uid) {
+  const u = S.units[uid]||{};
+  const tipM = {ev_sahibi:'🏠 Ev Sahibi', kiraci:'🔑 Kiracı', bos:'⬜ Boş'};
+  const av = u.foto
+    ? `<img src="${u.foto}" alt="">`
+    : (uid.startsWith('D') ? '🏠' : '🏪');
+
+  const field = (icon, label, val, editKey, type='text', opts=null) => {
+    const displayVal = val
+      ? `<div class="rp-field-val">${esc(val)}</div>`
+      : `<div class="rp-field-empty">Belirtilmemiş</div>`;
+
+    let inputEl;
+    if(opts) {
+      inputEl = `<select class="fc" id="rp-${editKey}" style="flex:1;padding:5px 9px;font-size:.82rem">
+        ${opts.map(o=>`<option value="${o.v}" ${o.v===val?'selected':''}>${o.l}</option>`).join('')}
+      </select>`;
+    } else if(type==='textarea') {
+      inputEl = `<textarea class="fc" id="rp-${editKey}" rows="2" style="flex:1;font-size:.82rem;resize:vertical">${esc(val||'')}</textarea>`;
+    } else {
+      inputEl = `<input class="fc" type="${type}" id="rp-${editKey}" value="${esc(val||'')}" style="flex:1;padding:5px 9px;font-size:.82rem">`;
+    }
+
+    return `<div class="rp-field" id="rp-row-${editKey}">
+      <div class="rp-field-icon">${icon}</div>
+      <div style="flex:1;min-width:0">
+        <div class="rp-field-label">${label}</div>
+        ${displayVal}
+        <div class="rp-edit-inline">
+          ${inputEl}
+          <button class="rp-save-btn" onclick="saveResField('${uid}','${editKey}')">✓</button>
+          <button class="rp-cancel-btn" onclick="cancelResEdit('${editKey}')">✕</button>
+        </div>
+      </div>
+      <button class="rp-edit-btn" id="rp-edit-${editKey}" onclick="startResEdit('${editKey}')">✏️ Düzenle</button>
+    </div>`;
+  };
+
+  return `<div class="res-section" style="padding:0">
+
+    <!-- Fotoğraf & özet -->
+    <div class="rp-avatar-wrap">
+      <div class="rp-avatar" onclick="document.getElementById('rp-foto-input').click()" title="Fotoğrafı değiştir">
+        ${av}
+        <input type="file" id="rp-foto-input" accept="image/*" style="display:none" onchange="resUpdatePhoto(this,'${uid}')">
+      </div>
+      <div style="flex:1;min-width:0">
+        <div class="rp-name">${esc(fullName(uid))||uid}</div>
+        <div class="rp-meta">
+          <span style="background:var(--s3);border:1px solid var(--border);border-radius:20px;padding:2px 9px">${uid}</span>
+          <span style="background:var(--s3);border:1px solid var(--border);border-radius:20px;padding:2px 9px">${uid.startsWith('D')?'Daire':'Dükkan'}</span>
+          <span style="background:rgba(79,142,247,.12);color:var(--accent);border-radius:20px;padding:2px 9px">${tipM[u.tip]||'—'}</span>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+          <label class="btn bp bsm" style="cursor:pointer;font-size:.72rem">
+            📷 Fotoğraf Yükle
+            <input type="file" accept="image/*" style="display:none" onchange="resUpdatePhoto(this,'${uid}')">
+          </label>
+          ${u.foto?`<button class="btn br bsm" style="font-size:.72rem" onclick="clearResFoto('${uid}')">🗑 Fotoğrafı Sil</button>`:''}
+        </div>
+      </div>
+    </div>
+
+    <!-- Kişisel Bilgiler Kartı -->
+    <div class="rp-card" style="margin:14px 16px 0">
+      <div class="rp-card-hdr">
+        <div class="rp-card-title">👤 Kişisel Bilgiler</div>
+        <span style="font-size:.65rem;color:var(--t3)">Herhangi bir alanı düzenlemek için ✏️ tıklayın</span>
+      </div>
+      <div class="rp-card-body">
+        ${field('🔤','Ad', u.ad, 'ad')}
+        ${field('🔤','Soyad', u.soyad, 'soyad')}
+        ${field('📞','Telefon', u.tel, 'tel', 'tel')}
+        ${field('✉️','E-Posta', u.email, 'email', 'email')}
+        ${field('📝','Not / Açıklama', u.not, 'not', 'textarea')}
+      </div>
+    </div>
+
+    <!-- Şifre Değişikliği Kartı -->
+    <div class="rp-card" style="margin:14px 16px 0">
+      <div class="rp-card-hdr">
+        <div class="rp-card-title">🔑 Şifre Değişikliği</div>
+      </div>
+      <div class="rp-card-body">
+        <div class="rp-pw-section">
+          <div class="fg2" style="margin-bottom:10px">
+            <div class="fg" style="margin:0">
+              <label class="fl">Mevcut Şifre</label>
+              <input class="fc" type="password" id="rp-pw-cur" placeholder="••••••" autocomplete="current-password">
+            </div>
+            <div class="fg" style="margin:0">
+              <label class="fl">Yeni Şifre</label>
+              <input class="fc" type="password" id="rp-pw-new" placeholder="••••••" autocomplete="new-password"
+                oninput="checkPwStrength(this.value,'rp-pw-strength')">
+              <div id="rp-pw-strength" style="margin-top:4px;font-size:.67rem;min-height:15px"></div>
+            </div>
+          </div>
+          <button class="btn bp bsm" onclick="resChangePw('${uid}')">🔒 Şifremi Güncelle</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Salt-okunur bilgiler (admin tarafından belirlenir) -->
+    <div class="rp-card" style="margin:14px 16px 14px">
+      <div class="rp-card-hdr">
+        <div class="rp-card-title">ℹ️ Birim Bilgileri</div>
+        <span style="font-size:.65rem;color:var(--t3)">Yönetici tarafından belirlenir</span>
+      </div>
+      <div class="rp-card-body">
+        <div class="rp-field">
+          <div class="rp-field-icon">🏷</div>
+          <div>
+            <div class="rp-field-label">Oturum Tipi</div>
+            <div class="rp-field-val">${tipM[u.tip]||'—'}</div>
+          </div>
+        </div>
+        <div class="rp-field">
+          <div class="rp-field-icon">📅</div>
+          <div>
+            <div class="rp-field-label">Taşınma Tarihi</div>
+            <div class="${u.tarih?'rp-field-val':'rp-field-empty'}">${u.tarih||'Belirtilmemiş'}</div>
+          </div>
+        </div>
+        <div class="rp-field" style="border-bottom:none">
+          <div class="rp-field-icon">⚪</div>
+          <div>
+            <div class="rp-field-label">Muafiyet Durumu</div>
+            <div class="rp-field-val">${u.exempt?'Muaf birim':'Aktif — aidat ödemesi gerekli'}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>`;
+}
+
+// ─── Inline alan düzenleme ───
+function startResEdit(key) {
+  const row = document.getElementById(`rp-row-${key}`);
+  const editBtn = document.getElementById(`rp-edit-${key}`);
+  if(!row) return;
+  row.classList.add('editing');
+  if(editBtn) editBtn.style.display='none';
+  const input = document.getElementById(`rp-${key}`);
+  if(input) setTimeout(()=>input.focus(), 50);
+}
+
+function cancelResEdit(key) {
+  const row = document.getElementById(`rp-row-${key}`);
+  const editBtn = document.getElementById(`rp-edit-${key}`);
+  if(row) row.classList.remove('editing');
+  if(editBtn) editBtn.style.display='';
+}
+
+async function saveResField(uid, key) {
+  if(!currentUser){toast('⛔ Giriş gerekli!','ts-e');return;}
+  // Sakin sadece kendi kaydını düzenleyebilir
+  if(currentUser.role==='resident' && currentUser.uid!==uid){
+    toast('⛔ Yetki yok!','ts-e');return;
+  }
+  const allowedFields = ['ad','soyad','tel','email','not'];
+  // Admin daha fazla alan düzenleyebilir
+  if(currentUser.role==='admin') allowedFields.push('tip','tarih');
+  if(!allowedFields.includes(key)){toast('⛔ Bu alan düzenlenemez!','ts-e');return;}
+
+  const input = document.getElementById(`rp-${key}`);
+  if(!input){return;}
+
+  let val = input.value;
+  if(key==='tel') val = validateInput(val,'tel',20);
+  else if(key==='email') val = validateInput(val,'email',80);
+  else val = validateInput(val,'text', key==='not'?300:50);
+
+  if(!S.units[uid]) S.units[uid]={};
+  S.units[uid][key] = val;
+
+  await save();
+  cancelResEdit(key);
+  // Alanı güncelle — sayfayı yeniden render et
+  resTab='profil';
+  renderResidentDashboard(uid);
+  // Hero adı da güncelle
+  document.getElementById('rh-pill').textContent = `🏠 ${uid} — ${fullName(uid)}`;
+  toast(`${key==='ad'?'Ad':key==='soyad'?'Soyad':key==='tel'?'Telefon':key==='email'?'E-posta':'Not'} güncellendi ✓`,'ts-s');
+}
+
+async function clearResFoto(uid) {
+  if(!currentUser){toast('⛔ Giriş gerekli!','ts-e');return;}
+  if(currentUser.role==='resident' && currentUser.uid!==uid){toast('⛔ Yetki yok!','ts-e');return;}
+  if(!S.units[uid]) return;
+  S.units[uid].foto='';
+  await save();
+  resTab='profil';
+  renderResidentDashboard(uid);
+  toast('Fotoğraf silindi','ts-i');
+}
+
+async function resChangePw(uid) {
+  if(!currentUser){toast('⛔ Giriş gerekli!','ts-e');return;}
+  if(currentUser.role==='resident' && currentUser.uid!==uid){toast('⛔ Yetki yok!','ts-e');return;}
+
+  const curPw = document.getElementById('rp-pw-cur')?.value||'';
+  const newPw = document.getElementById('rp-pw-new')?.value||'';
+
+  if(!curPw||!newPw){toast('Her iki alanı da doldurun!','ts-e');return;}
+  if(newPw.length<4){toast('Yeni şifre en az 4 karakter olmalı!','ts-e');return;}
+
+  const unitPass = S.units[uid]?.pass||'';
+  if(curPw!==unitPass){toast('Mevcut şifre hatalı!','ts-e');return;}
+  if(curPw===newPw){toast('Yeni şifre eskiyle aynı olamaz!','ts-i');return;}
+
+  if(!S.units[uid]) S.units[uid]={};
+  S.units[uid].pass = newPw;
+  await save();
+  document.getElementById('rp-pw-cur').value='';
+  document.getElementById('rp-pw-new').value='';
+  document.getElementById('rp-pw-strength').innerHTML='';
+  toast('Şifreniz başarıyla güncellendi 🔒','ts-s');
+}
+
+
   const items=(S.galeri||[]).slice().reverse();
   if(!items.length) return `<div class="res-section"><div class="empty"><div class="ei">🖼</div><p>Henüz galeri fotoğrafı yok</p></div></div>`;
   let h=`<div class="res-section"><div class="res-section-hdr"><h3>🖼 Site Galerisi</h3></div>
@@ -3269,9 +4043,9 @@ function renderResIcraatlar() {
       ${mainImg?`<img class="ic-img" src="${mainImg.data}" alt="${x.title}" onclick="openImgPreview('${mainImg.data}','${x.title}')">`:`<div class="ic-img-ph">🔨</div>`}
       <div class="ic-body">
         <div class="ic-cat">${x.cat||'Diğer'}</div>
-        <div class="ic-title">${x.title||'—'}</div>
+        <div class="ic-title">${esc(x.title)||'—'}</div>
         <div class="ic-meta"><span>📅 ${x.date||'—'}</span>${x.cost?`<span>💸 ${fmt(x.cost)}</span>`:''}</div>
-        <div class="ic-desc">${x.desc||''}</div>
+        <div class="ic-desc">${esc(x.desc)||''}</div>
         ${(x.imgs||[]).length?`<div class="ic-fatura">${x.imgs.map((img,i)=>`<span class="ic-ftag" onclick="openImgPreview('${img.data}','${x.title} — Belge ${i+1}')">${img.type==='image'?'🖼':'📄'} Belge ${i+1}</span>`).join('')}</div>`:''}
       </div>
     </div>`;
@@ -3290,8 +4064,8 @@ function renderResMesajlar(uid) {
   myMsgs.forEach(m=>{
     h+=`<div class="msg-card" style="margin-bottom:10px">
       <div class="msg-header"><div class="msg-from">${m.konu||'Genel'}</div><div class="msg-date">${m.date||''}</div></div>
-      <div class="msg-text">${m.text||''}</div>
-      ${m.reply?`<div class="msg-reply"><div class="msg-reply-hdr">🔑 Yönetici Yanıtı · ${m.replyDate||''}</div>${m.reply}</div>`
+      <div class="msg-text">${esc(m.text)||''}</div>
+      ${m.reply?`<div class="msg-reply"><div class="msg-reply-hdr">🔑 Yönetici Yanıtı · ${esc(m.replyDate)||''}</div>${esc(m.reply)}</div>`
                :`<div style="font-size:.7rem;color:var(--t3);margin-top:6px">⏳ Yanıt bekleniyor...</div>`}
     </div>`;
   });
@@ -3307,7 +4081,7 @@ function renderResDuyurular() {
   let h=`<div class="res-section"><div class="res-section-hdr"><h3>📢 Duyurular</h3></div><div style="padding:8px 16px 16px">`;
   if(!anns.length) h+=`<div class="empty"><div class="ei">📢</div><p>Duyuru yok</p></div>`;
   [...anns].reverse().forEach(a=>{
-    h+=`<div class="res-msg-card"><div class="res-msg-date">${a.date}</div><div class="res-msg-text">${a.text}</div></div>`;
+    h+=`<div class="res-msg-card"><div class="res-msg-date">${esc(a.date)}</div><div class="res-msg-text">${esc(a.text)}</div></div>`;
   });
   h+=`</div></div>`;
   return h;
@@ -3328,19 +4102,27 @@ function setResCY(y, uid, el) {
 }
 
 async function resUpdatePhoto(input, uid) {
+  if(!currentUser){toast('⛔ Giriş yapmanız gerekli!','ts-e');return;}
+  if(currentUser.role==='resident' && currentUser.uid!==uid){toast('⛔ Yetki yok!','ts-e');return;}
   const f=input.files[0]; if(!f) return;
   if(f.size>1.5*1024*1024){toast('Fotoğraf 1.5MB\'den küçük olmalı!','ts-e');return;}
-  const reader=new FileReader();
-  reader.onload=async e=>{
+  const r=new FileReader();
+  r.onload=async e=>{
     if(!S.units[uid]) S.units[uid]={};
     S.units[uid].foto=e.target.result;
     await save();
-    renderResidentDashboard(uid);
-    toast('Fotoğrafınız güncellendi ✓','ts-s');
+    // Profil sekmesindeyse orayı yenile, değilse hero avatar'ı güncelle
+    if(resTab==='profil') {
+      renderResidentDashboard(uid);
+    } else {
+      // Hero avatar'ı anlık güncelle
+      const heroAv = document.querySelector('.res-hero-av');
+      if(heroAv) heroAv.innerHTML=`<img src="${e.target.result}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    }
+    toast('Fotoğraf güncellendi ✓','ts-s');
   };
-  reader.readAsDataURL(f);
+  r.readAsDataURL(f);
 }
-
 function openResMonthDetail(uid, mi) {
   const a=getAR(resCY,uid,mi), t=getTutar(resCY,mi), u=S.units[uid]||{};
   if(a.status==='unpaid'){toast(`${MTR[mi]} ${resCY}: ${fmt(t)} ödenmedi`,'ts-i');return;}
@@ -3379,24 +4161,52 @@ function renderPwList() {
   }).join('');
 }
 
+// ── Şifre Güvenlik Skoru ──
+function checkPwStrength(pw, targetId) {
+  const el = document.getElementById(targetId);
+  if(!el || !pw) { if(el) el.innerHTML=''; return; }
+  let score=0, tips=[];
+  if(pw.length >= 8) score++; else tips.push('en az 8 karakter');
+  if(pw.length >= 12) score++;
+  if(/[A-Z]/.test(pw)) score++; else tips.push('büyük harf');
+  if(/[0-9]/.test(pw)) score++; else tips.push('rakam');
+  if(/[^A-Za-z0-9]/.test(pw)) score++; else tips.push('özel karakter');
+  const levels=[
+    {label:'Çok Zayıf 🔴',color:'var(--red)'},
+    {label:'Zayıf 🟠',color:'var(--orange)'},
+    {label:'Orta 🟡',color:'var(--a2)'},
+    {label:'İyi 🟢',color:'var(--green)'},
+    {label:'Güçlü ✅',color:'var(--green)'},
+    {label:'Çok Güçlü 🛡',color:'var(--accent)'},
+  ];
+  const lvl=levels[Math.min(score,levels.length-1)];
+  const hint=tips.length?` · Ekleyin: ${tips.slice(0,2).join(', ')}`:'';
+  el.innerHTML=`<span style="color:${lvl.color};font-weight:600">${lvl.label}</span><span style="color:var(--t3)">${hint}</span>`;
+}
+
 async function saveAdminPw() {
-  const user = document.getElementById('pw-adm-user').value.trim();
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
+  const user = validateInput(document.getElementById('pw-adm-user').value,'text',50);
   const pass = document.getElementById('pw-adm-pass').value;
   if(!user||!pass){toast('Kullanıcı adı ve şifre gerekli!','ts-e');return;}
+  if(pass.length < 4){toast('Şifre en az 4 karakter olmalı!','ts-e');return;}
   if(!S.auth) S.auth={};
   S.auth.admin={user,pass};
   await save(); toast('Yönetici şifresi güncellendi ✓','ts-s');
 }
 
 async function saveUnitPw(uid) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const pw = document.getElementById(`pwf-${uid}`).value;
   if(!pw){toast('Şifre boş olamaz!','ts-e');return;}
+  if(pw.length < 3){toast('Şifre en az 3 karakter olmalı!','ts-e');return;}
   if(!S.units[uid]) S.units[uid]={};
   S.units[uid].pass=pw;
   await save(); rAdmin(); toast(`${uid} şifresi güncellendi ✓`,'ts-s');
 }
 
 async function removeUnitPw(uid) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   if(!S.units[uid]) return;
   delete S.units[uid].pass;
   await save(); rAdmin(); toast(`${uid} şifresi kaldırıldı`,'ts-i');
@@ -3415,7 +4225,8 @@ function openChPw(uid) {
 // DUYURULAR
 // ─────────────────────────────────────────────
 async function addAnnouncement() {
-  const text = document.getElementById('ann-text').value.trim();
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
+  const text = validateInput(document.getElementById('ann-text').value,'text',400);
   if(!text){toast('Duyuru metni boş olamaz!','ts-e');return;}
   if(!S.announcements) S.announcements=[];
   S.announcements.push({id:Date.now(), text, date:new Date().toLocaleDateString('tr-TR')});
@@ -3426,6 +4237,7 @@ async function addAnnouncement() {
 }
 
 async function deleteAnn(id) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   S.announcements=(S.announcements||[]).filter(a=>a.id!==id);
   await save(); renderAnnList(); toast('Duyuru silindi','ts-i');
 }
@@ -3517,6 +4329,7 @@ function addGalleryPhotos(input) {
 }
 
 async function delGalleryPhoto(id) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   S.galeri=(S.galeri||[]).filter(g=>g.id!==id);
   await save(); renderGaleri(); toast('Fotoğraf silindi','ts-i');
 }
@@ -3547,13 +4360,13 @@ function renderIcraatlar() {
                :`<div class="ic-img-ph">🔨</div>`}
       <div class="ic-body">
         <div class="ic-cat">${x.cat||'Diğer'}</div>
-        <div class="ic-title">${x.title||'İsimsiz'}</div>
+        <div class="ic-title">${esc(x.title)||'İsimsiz'}</div>
         <div class="ic-meta">
           <span>📅 ${x.date||'—'}</span>
           ${x.cost?`<span>💸 ${fmt(x.cost)}</span>`:''}
           ${faturaCount?`<span>📎 ${faturaCount} dosya</span>`:''}
         </div>
-        <div class="ic-desc">${x.desc||''}</div>
+        <div class="ic-desc">${esc(x.desc)||''}</div>
         ${faturaCount?`<div class="ic-fatura">${imgs.map((img,i)=>`<span class="ic-ftag" onclick="openImgPreview('${img.data}','${x.title} — Belge ${i+1}')">
           ${img.type==='image'?'🖼':'📄'} Belge ${i+1}</span>`).join('')}</div>`:''}
         <div style="margin-top:10px;display:flex;gap:6px">
@@ -3604,8 +4417,9 @@ function addIcraatImgs(input) {
 }
 
 async function saveIcraat() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const id = document.getElementById('ic-id').value || String(Date.now());
-  const title = document.getElementById('ic-title').value.trim();
+  const title = validateInput(document.getElementById('ic-title').value,'text',100);
   if(!title){toast('Başlık zorunlu!','ts-e');return;}
 
   // Görselleri topla
@@ -3634,6 +4448,7 @@ async function saveIcraat() {
 }
 
 async function delIcraat(id) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   if(!confirm('Bu icraat kaydı silinecek. Onaylıyor musunuz?')) return;
   S.icraatlar=(S.icraatlar||[]).filter(x=>x.id!==id);
   await save(); renderIcraatlar();
@@ -3663,7 +4478,7 @@ function renderFazlalar() {
       <div class="faz-uid">${f.uid} — ${fullName(f.uid)}</div>
       <div class="faz-amt">${fmt(f.amt)}</div>
       <div style="font-size:.72rem;color:${statusColor[f.status]||'var(--t2)'};font-weight:700;margin-bottom:4px">${statusLabel[f.status]||f.status}</div>
-      <div class="faz-note">📅 ${f.date||'—'} · ${f.note||''}</div>
+      <div class="faz-note">📅 ${f.date||'—'} · ${esc(f.note)||''}</div>
       <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
         <button class="btn bsec bsm" onclick="openFazlaModal('${f.id}')">✏️ Düzenle</button>
         <button class="btn br bsm" onclick="delFazla('${f.id}')">✕</button>
@@ -3684,6 +4499,7 @@ function openFazlaModal(id) {
 }
 
 async function saveFazla() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const id=document.getElementById('faz-id').value||String(Date.now());
   const amt=parseFloat(document.getElementById('faz-amt').value)||0;
   if(!amt){toast('Tutar giriniz!','ts-e');return;}
@@ -3699,6 +4515,7 @@ async function saveFazla() {
 }
 
 async function delFazla(id) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   S.fazlalar=(S.fazlalar||[]).filter(x=>x.id!==id);
   await save(); renderFazlalar(); toast('Silindi','ts-i');
 }
@@ -3724,9 +4541,8 @@ function renderMesajlar() {
           ${!m.read?`<span class="msg-badge">Yeni</span>`:''}</div>
         <div class="msg-date">${m.date||''}</div>
       </div>
-      <div class="msg-text">${m.text||''}</div>
-      ${m.reply?`<div class="msg-reply"><div class="msg-reply-hdr">✉️ Yanıtınız · ${m.replyDate||''}</div>${m.reply}</div>`:''}
-      <div style="margin-top:8px;display:flex;gap:6px">
+      <div class="msg-text">${esc(m.text)||''}</div>
+      ${m.reply?`<div class="msg-reply"><div class="msg-reply-hdr">✉️ Yanıtınız · ${esc(m.replyDate)||''}</div>${esc(m.reply)}</div>`:''}      <div style="margin-top:8px;display:flex;gap:6px">
         <button class="btn bp bsm" onclick="openReplyModal(${m.id})">💬 Yanıtla</button>
         <button class="btn bsec bsm" onclick="markMsgRead(${m.id})">✓ Okundu</button>
         <button class="btn br bsm" onclick="delMsg(${m.id})">✕ Sil</button>
@@ -3745,8 +4561,9 @@ function openReplyModal(id) {
 }
 
 async function sendReply() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const id=parseInt(document.getElementById('reply-msg-id').value);
-  const text=document.getElementById('reply-text').value.trim();
+  const text=validateInput(document.getElementById('reply-text').value,'text',500);
   if(!text){toast('Yanıt boş olamaz!','ts-e');return;}
   const m=(S.messages||[]).find(x=>x.id===id);
   if(!m) return;
@@ -3766,6 +4583,7 @@ async function markAllMsgRead() {
 }
 
 async function delMsg(id) {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   S.messages=(S.messages||[]).filter(x=>x.id!==id);
   await save(); renderMesajlar(); toast('Mesaj silindi','ts-i');
 }
@@ -3778,9 +4596,15 @@ function openSendMsgModal(uid) {
 }
 
 async function sendMessage() {
+  if(!currentUser){toast('⛔ Giriş yapmanız gerekli!','ts-e');return;}
   const uid=document.getElementById('sendmsg-uid').value;
-  const text=document.getElementById('sendmsg-text').value.trim();
-  const konu=document.getElementById('sendmsg-konu').value;
+  // Sakin sadece kendi adına mesaj gönderebilir
+  if(currentUser.role==='resident' && currentUser.uid!==uid) {
+    toast('⛔ Yalnızca kendi adınıza mesaj gönderebilirsiniz!','ts-e');
+    return;
+  }
+  const text=validateInput(document.getElementById('sendmsg-text').value,'text',500);
+  const konu=validateInput(document.getElementById('sendmsg-konu').value,'text',60);
   if(!text){toast('Mesaj boş olamaz!','ts-e');return;}
   if(!S.messages) S.messages=[];
   S.messages.push({id:Date.now(), uid, konu, text, date:new Date().toLocaleString('tr-TR'), read:false, reply:''});
@@ -3822,6 +4646,7 @@ function showAfterLoad() {
   document.getElementById('admin-view').style.display='none';
   document.getElementById('resident-view').style.display='none';
   if(_fbMode) updateFbStatus();
+  renderLoginIban(); // IBAN bilgisini login ekranında göster
 }
 
 /* Firebase SDK'nın hazır olmasını bekle (max 8 saniye) */
