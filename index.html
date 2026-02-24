@@ -37,14 +37,30 @@ function firebaseAvailable() {
   --partial:rgba(247,201,79,.08);--partb:#8a7020;
   --exempt:rgba(167,139,250,.1);--eb:#6b55b8;
   --r:14px;--rs:9px;--sh:0 4px 24px rgba(0,0,0,.4);
+  --bg-grad1:rgba(79,142,247,.06);--bg-grad2:rgba(167,139,250,.04);
 }
+[data-theme="light"]{
+  --bg:#f0f2f8;--surface:#ffffff;--s2:#f5f7ff;--s3:#eef0f8;
+  --border:#dde1ef;--b2:#e8ebf5;
+  --accent:#2563eb;--ah:#3b82f6;--a2:#d97706;
+  --green:#059669;--red:#dc2626;--purple:#7c3aed;--orange:#ea580c;
+  --text:#1e2233;--t2:#4b5680;--t3:#9ba3bf;
+  --paid:rgba(5,150,105,.08);--pb:#065f46;
+  --unpaid:rgba(220,38,38,.06);--ub:#991b1b;
+  --partial:rgba(217,119,6,.08);--partb:#92400e;
+  --exempt:rgba(124,58,237,.08);--eb:#4c1d95;
+  --sh:0 2px 16px rgba(30,34,51,.12);
+  --bg-grad1:rgba(37,99,235,.04);--bg-grad2:rgba(124,58,237,.03);
+}
+/* Tema geçiş animasyonu */
+*{transition:background-color .25s,border-color .25s,color .15s}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);
   min-height:100vh;overflow-x:hidden;
-  background-image:radial-gradient(ellipse at 20% 0%,rgba(79,142,247,.06) 0%,transparent 60%),
-                   radial-gradient(ellipse at 80% 100%,rgba(167,139,250,.04) 0%,transparent 60%);
+  background-image:radial-gradient(ellipse at 20% 0%,var(--bg-grad1) 0%,transparent 60%),
+                   radial-gradient(ellipse at 80% 100%,var(--bg-grad2) 0%,transparent 60%);
 }
 
 /* HEADER */
@@ -332,6 +348,24 @@ select.fc option{background:var(--s3)}
 .photo-upload-area:hover{border-color:var(--accent)}
 .photo-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .photo-preview{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);margin:0 auto 8px;display:block}
+/* TEMA TOGGLE */
+.theme-btn{background:var(--s3);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:.72rem;color:var(--t2);cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .15s}
+.theme-btn:hover{border-color:var(--accent);color:var(--text)}
+/* Kartal Galerisi */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gal-item{position:relative;border-radius:var(--rs);overflow:hidden;background:var(--s3);border:1px solid var(--border);aspect-ratio:4/3;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.gal-item:hover{transform:scale(1.02);box-shadow:var(--sh)}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block}
+.gal-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%);display:flex;align-items:flex-end;padding:10px;opacity:0;transition:opacity .18s}
+.gal-item:hover .gal-item-overlay{opacity:1}
+.gal-item-label{color:#fff;font-size:.72rem;font-weight:600}
+.gal-add{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--t3);font-size:.78rem;min-height:140px}
+.gal-add:hover{color:var(--accent);border-color:var(--accent)}
+/* Dönemsel Muafiyet */
+.exempt-period-row{display:flex;gap:6px;align-items:center;background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:8px 10px;margin-bottom:6px;flex-wrap:wrap}
+.exempt-tag{display:inline-flex;align-items:center;gap:4px;background:rgba(167,139,250,.15);color:var(--purple);border-radius:20px;padding:2px 8px;font-size:.65rem;font-weight:700}
+/* Hero görsel */
+.site-hero-banner{width:100%;height:180px;object-fit:cover;border-radius:var(--r);margin-bottom:14px;display:block}
 /* MOBILE */
 .mob-cards{display:none}
 .muc{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:7px;overflow:hidden}
@@ -510,6 +544,7 @@ select.fc option{background:var(--s3)}
       </div>
       <div class="hpills">
         <div class="pill" id="rh-pill">🏠 —</div>
+        <button class="theme-btn" onclick="toggleTheme()" id="res-theme-btn">🌙 Dark</button>
         <button class="btn bsec bsm" onclick="doLogout()" style="cursor:pointer">Çıkış</button>
       </div>
     </div>
@@ -529,6 +564,7 @@ select.fc option{background:var(--s3)}
       <div class="pill">🏢 <strong id="hp-d">32</strong> Daire</div>
       <div class="pill">🏪 <strong id="hp-s">2</strong> Dükkan</div>
       <span id="sync-status" class="sync-pill sync-saved"><span>✅</span><span>Kaydedildi</span></span>
+      <button class="theme-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Tema değiştir">🌙 Dark</button>
       <div class="pill adm" onclick="switchTab('admin',null)">⚙️ Admin</div>
       <button class="btn bsec bsm" onclick="doLogout()" style="cursor:pointer">Çıkış</button>
     </div>
@@ -542,6 +578,7 @@ select.fc option{background:var(--s3)}
     <button class="tab-btn" onclick="switchTab('profiller',this)"><span>👤</span><span class="tl">Profiller</span></button>
     <button class="tab-btn" onclick="switchTab('gelir',this)"><span>📈</span><span class="tl">Gelir/Gider</span></button>
     <button class="tab-btn" onclick="switchTab('icraatlar',this)"><span>🔨</span><span class="tl">İcraatlar</span></button>
+    <button class="tab-btn" onclick="switchTab('galeri',this)"><span>🖼</span><span class="tl">Galeri</span></button>
     <button class="tab-btn" onclick="switchTab('fazlalar',this)"><span>💰</span><span class="tl">Fazlalıklar</span></button>
     <button class="tab-btn" onclick="switchTab('mesajlar',this)"><span>💬</span><span class="tl">Mesajlar</span><span id="msg-badge" style="display:none" class="msg-badge">!</span></button>
     <button class="tab-btn" onclick="switchTab('banka',this)"><span>🏦</span><span class="tl">Banka</span></button>
@@ -652,6 +689,18 @@ select.fc option{background:var(--s3)}
       </select>
     </div>
     <div class="ic-grid" id="ic-grid"></div>
+  </div>
+
+  <!-- GALERİ -->
+  <div id="panel-galeri" class="panel">
+    <div class="sh">
+      <div><div class="st">🖼 Site Galerisi</div><div class="sub">Sitenin fotoğrafları, etkinlikleri ve anlar</div></div>
+      <label class="btn bp bsm" style="cursor:pointer">
+        📎 Fotoğraf Ekle <input type="file" id="gal-upload" accept="image/*" multiple style="display:none" onchange="addGalleryPhotos(this)">
+      </label>
+    </div>
+    <div class="sg" id="gal-summary" style="margin-bottom:14px"></div>
+    <div class="gallery-grid" id="gallery-grid"></div>
   </div>
 
   <!-- FAZLALIKLAR -->
@@ -877,19 +926,48 @@ select.fc option{background:var(--s3)}
 <div class="mo" id="mo-aidat">
   <div class="md">
     <div class="mh"><h3 id="mo-a-t">Aidat Durumu</h3><p id="mo-a-s"></p></div>
-    <div class="fg"><label class="fl">Durum</label>
-      <select class="fc" id="mo-status" onchange="toggleAmt()">
-        <option value="unpaid">❌ Ödenmedi</option>
-        <option value="paid">✅ Ödendi (Tam)</option>
-        <option value="partial">⚠️ Kısmi Ödeme</option>
-      </select>
+
+    <!-- Hızlı Durum Butonları -->
+    <div style="display:flex;gap:7px;margin-bottom:14px">
+      <button class="btn bsm" id="qbtn-paid"
+        style="flex:1;justify-content:center;background:rgba(62,207,142,.12);border:1px solid rgba(62,207,142,.3);color:var(--green)"
+        onclick="quickSetStatus('paid')">✅ Ödendi</button>
+      <button class="btn bsm" id="qbtn-partial"
+        style="flex:1;justify-content:center;background:rgba(247,201,79,.1);border:1px solid rgba(247,201,79,.3);color:var(--a2)"
+        onclick="quickSetStatus('partial')">⚠️ Kısmi</button>
+      <button class="btn bsm" id="qbtn-unpaid"
+        style="flex:1;justify-content:center;background:rgba(247,111,111,.1);border:1px solid rgba(247,111,111,.3);color:var(--red)"
+        onclick="quickSetStatus('unpaid')">❌ Ödenmedi</button>
     </div>
+
+    <input type="hidden" id="mo-status" value="unpaid">
     <div class="fg" id="mo-amt-w" style="display:none"><label class="fl">Ödenen Tutar (₺)</label><input type="number" class="fc" id="mo-amt"></div>
-    <div class="fg2">
-      <div class="fg"><label class="fl">Ödeme Tarihi</label><input type="date" class="fc" id="mo-date"></div>
-      <div class="fg"><label class="fl">Makbuz No</label><input type="text" class="fc" id="mo-mkbz" placeholder="Opsiyonel"></div>
+
+    <!-- Ödeme Yöntemi -->
+    <div class="fg" id="mo-method-w">
+      <label class="fl">Ödeme Yöntemi</label>
+      <div style="display:flex;gap:7px">
+        <button class="btn bsm" id="pm-nakit" style="flex:1;justify-content:center"
+          onclick="selectPayMethod('nakit')">💵 Nakit</button>
+        <button class="btn bsm" id="pm-havale" style="flex:1;justify-content:center"
+          onclick="selectPayMethod('havale')">🏦 Havale/IBAN</button>
+        <button class="btn bsm" id="pm-kart" style="flex:1;justify-content:center"
+          onclick="selectPayMethod('kart')">💳 Kart</button>
+      </div>
     </div>
-    <div class="fg"><label class="fl">Not</label><input type="text" class="fc" id="mo-note" placeholder="Opsiyonel not..."></div>
+    <input type="hidden" id="mo-paymethod" value="nakit">
+
+    <div class="fg2">
+      <div class="fg">
+        <label class="fl" style="display:flex;justify-content:space-between">
+          Ödeme Tarihi
+          <button onclick="setTodayDate()" style="background:none;border:none;color:var(--accent);font-size:.68rem;cursor:pointer;padding:0">Bugün</button>
+        </label>
+        <input type="date" class="fc" id="mo-date">
+      </div>
+      <div class="fg"><label class="fl">Makbuz No <span style="color:var(--t3);font-weight:400">(opsiyonel)</span></label><input type="text" class="fc" id="mo-mkbz" placeholder="—"></div>
+    </div>
+    <div class="fg"><label class="fl">Not <span style="color:var(--t3);font-weight:400">(opsiyonel)</span></label><input type="text" class="fc" id="mo-note" placeholder="Opsiyonel not..."></div>
     <div class="br2">
       <button class="btn bsec" onclick="closeModal('mo-aidat')">İptal</button>
       <button class="btn bp" onclick="saveAidat()">💾 Kaydet</button>
@@ -1130,6 +1208,37 @@ select.fc option{background:var(--s3)}
   </div>
 </div>
 
+<!-- MODAL: Dönemsel Muafiyet -->
+<div class="mo" id="mo-exempt">
+  <div class="md lg">
+    <div class="mh"><h3 id="mo-ex-t">⚪ Muafiyet Yönetimi</h3><p id="mo-ex-s">Kalıcı veya belirli dönemler için muafiyet tanımlayın</p></div>
+    <input type="hidden" id="ex-uid">
+    <div style="background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:12px;margin-bottom:14px">
+      <div style="font-size:.78rem;font-weight:700;color:var(--t2);margin-bottom:10px">Kalıcı Muafiyet</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:.78rem;color:var(--t3)">Tüm dönemler için muaf tut</span>
+        <label class="tsw" style="margin-left:auto"><input type="checkbox" id="ex-global" onchange="toggleExGlobal()"><div class="ttr"></div><div class="tth"></div></label>
+      </div>
+    </div>
+    <div id="ex-period-section">
+      <div style="font-size:.78rem;font-weight:700;color:var(--t2);margin-bottom:10px">Dönemsel Muafiyet Ekle</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;margin-bottom:10px">
+        <div><label class="fl">Başlangıç (Ay-Yıl)</label><input type="month" class="fc" id="ex-start" placeholder="2025-01"></div>
+        <div><label class="fl">Bitiş (Ay-Yıl)</label><input type="month" class="fc" id="ex-end" placeholder="2025-12"></div>
+        <button class="btn bp bsm" onclick="addExemptPeriod()" style="margin-bottom:1px">+ Ekle</button>
+      </div>
+      <div style="font-size:.7rem;color:var(--t3);margin-bottom:10px">
+        💡 Yıllık seçmek için başlangıç: 2025-01, bitiş: 2025-12 girin
+      </div>
+      <div id="ex-periods-list"></div>
+    </div>
+    <div class="br2">
+      <button class="btn bsec" onclick="closeModal('mo-exempt')">Kapat</button>
+      <button class="btn bp" onclick="saveExemptSettings()">💾 Kaydet</button>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL: Resim Önizleme -->
 <div class="mo" id="mo-img-preview" style="z-index:9000">
   <div class="md" style="max-width:92vw;background:rgba(0,0,0,.85);padding:8px;position:relative">
@@ -1185,7 +1294,8 @@ const DEF = {
   units:{}, aidatlar:{}, ggk:[],
   icraatlar:[],   // Yapılan işler / icraat kayıtları
   messages:[],    // Sakinlerden yöneticiye mesajlar
-  fazlalar:[]     // Aidat fazlalık kayıtları
+  fazlalar:[],    // Aidat fazlalık kayıtları
+  galeri:[]       // Site fotoğraf galerisi
 };
 
 let S = JSON.parse(JSON.stringify(DEF));
@@ -2163,7 +2273,7 @@ function switchTab(name, el) {
   if(p) p.classList.add('active');
   if(el) el.classList.add('active');
   else document.querySelectorAll('.tab-btn').forEach(b=>{ if(b.onclick&&b.onclick.toString().includes(`'${name}'`)) b.classList.add('active'); });
-  const R = {dashboard:rDash, aidat:rAidat, profiller:renderProfiller, gelir:renderGG, istatistik:rIstat, admin:rAdmin, banka:renderBankaPanel, icraatlar:renderIcraatlar, fazlalar:renderFazlalar, mesajlar:renderMesajlar};
+  const R = {dashboard:rDash, aidat:rAidat, profiller:renderProfiller, gelir:renderGG, istatistik:rIstat, admin:rAdmin, banka:renderBankaPanel, icraatlar:renderIcraatlar, galeri:renderGaleri, fazlalar:renderFazlalar, mesajlar:renderMesajlar};
   if(R[name]) R[name]();
 }
 
@@ -2199,18 +2309,6 @@ function fullName(uid) {
   return [u.ad,u.soyad].filter(Boolean).join(' ')||'—';
 }
 
-function calcUnit(uid, year) {
-  const u=S.units[uid]||{};
-  if(u.exempt) return {ode:0,bek:0,pct:0,exempt:true};
-  let ode=0,bek=0;
-  for(let i=0;i<12;i++){
-    const t=getTutar(year,i); bek+=t;
-    const a=getAR(year,uid,i);
-    if(a.status==='paid') ode+=t;
-    else if(a.status==='partial') ode+=(a.amount||0);
-  }
-  return {ode,bek,pct:bek>0?Math.round(ode/bek*100):0,exempt:false};
-}
 
 function fmt(v) {
   if(v===undefined||v===null||isNaN(v)) return '0 ₺';
@@ -2253,6 +2351,7 @@ function rAidatTable() {
     let ode=0,bek=0;
     MSH.forEach((_,i) => {
       if(exempt){h+=`<td><div class="cb2 exempt">Muaf</div></td>`;return;}
+      if(isUnitExempt(uid,CY,i)){h+=`<td><div class="cb2 exempt" style="font-size:.55rem">Dönem<br>Muaf</div></td>`;return;}
       const a=getAR(CY,uid,i), t=getTutar(CY,i);
       bek+=t;
       let cls=a.status, icon='✗', al=`${t}₺`;
@@ -2273,7 +2372,7 @@ function rAidatTable() {
   h+=`<tr style="background:var(--s3)"><td colspan="3" style="padding:9px 14px;font-weight:700;font-size:.76rem;color:var(--t2)">TOPLAM</td>`;
   MSH.forEach((_,i) => {
     let pN=0,ptN=0,tot=0;
-    units.forEach(uid=>{if(S.units[uid]?.exempt)return;const a=getAR(CY,uid,i);if(a.status==='paid')pN++;else if(a.status==='partial')ptN++;tot++;});
+    units.forEach(uid=>{if(S.units[uid]?.exempt||isUnitExempt(uid,CY,i))return;const a=getAR(CY,uid,i);if(a.status==='paid')pN++;else if(a.status==='partial')ptN++;tot++;});
     h+=`<td style="font-size:.65rem;color:var(--t3);padding:5px 3px"><span style="color:var(--green)">${pN}✓</span><br><span style="color:var(--red)">${tot-pN-ptN}✗</span></td>`;
   });
   h+=`<td></td><td></td></tr></tbody>`;
@@ -2314,31 +2413,97 @@ function togMob(uid) { document.getElementById(`mc-${uid}`)?.classList.toggle('e
 // AIDAT MODAL
 // ─────────────────────────────────────────────
 function openAM(uid, mi) {
-  if(S.units[uid]?.exempt) return;
+  // Muafiyet kontrolü — kalıcı veya dönemsel
+  if(isUnitExempt(uid, CY, mi)) return;
   MAI={uid,mi};
   const a=getAR(CY,uid,mi), t=getTutar(CY,mi);
   document.getElementById('mo-a-t').textContent=`${uid} · ${MTR[mi]} ${CY}`;
   document.getElementById('mo-a-s').textContent=`${fullName(uid)} — Aidat: ${fmt(t)}`;
-  document.getElementById('mo-status').value=a.status;
+
+  // Durum
+  const st = a.status||'unpaid';
+  setAidatStatus(st);
+
+  // Tutar
   document.getElementById('mo-amt').value=a.amount||t;
-  document.getElementById('mo-date').value=a.date||'';
-  document.getElementById('mo-mkbz').value=a.makbuz||'';
-  document.getElementById('mo-note').value=a.note||'';
-  toggleAmt();
+
+  // Ödeme yöntemi
+  selectPayMethod(a.paymethod||'nakit');
+
+  // Tarih: mevcut ya da bugün
+  document.getElementById('mo-date').value = a.date || new Date().toISOString().slice(0,10);
+  document.getElementById('mo-mkbz').value = a.makbuz||'';
+  document.getElementById('mo-note').value = a.note||'';
+
+  // Ödenmedi seçiliyse ödeme alanlarını gizle
+  const isUnpaid = st==='unpaid';
+  document.getElementById('mo-method-w').style.display = isUnpaid?'none':'block';
+
   document.getElementById('mo-aidat').classList.add('open');
 }
 
-function toggleAmt() {
-  document.getElementById('mo-amt-w').style.display=document.getElementById('mo-status').value==='partial'?'block':'none';
+function setAidatStatus(st) {
+  document.getElementById('mo-status').value=st;
+  ['paid','partial','unpaid'].forEach(s=>{
+    const btn=document.getElementById(`qbtn-${s}`);
+    if(btn) btn.style.outline=s===st?'2px solid currentColor':'none';
+  });
+  document.getElementById('mo-amt-w').style.display=st==='partial'?'block':'none';
+  document.getElementById('mo-method-w').style.display=st==='unpaid'?'none':'block';
 }
 
+function quickSetStatus(st) {
+  setAidatStatus(st);
+  // Ödendi seçilince tarihi bugüne otomatik ayarla
+  if(st!=='unpaid' && !document.getElementById('mo-date').value) {
+    document.getElementById('mo-date').value=new Date().toISOString().slice(0,10);
+  }
+}
+
+function selectPayMethod(method) {
+  document.getElementById('mo-paymethod').value=method||'nakit';
+  ['nakit','havale','kart'].forEach(m=>{
+    const btn=document.getElementById(`pm-${m}`);
+    if(!btn) return;
+    btn.style.background=m===method?'rgba(79,142,247,.2)':'var(--s3)';
+    btn.style.border=m===method?'1px solid var(--accent)':'1px solid var(--border)';
+    btn.style.color=m===method?'var(--accent)':'var(--t2)';
+  });
+}
+
+function setTodayDate() {
+  document.getElementById('mo-date').value=new Date().toISOString().slice(0,10);
+}
+
+function toggleAmt() { /* legacy - artık kullanılmıyor, setAidatStatus kullanıyor */ }
+
 async function saveAidat() {
-  const {uid,mi}=MAI, status=document.getElementById('mo-status').value;
+  const {uid,mi}=MAI;
+  const status=document.getElementById('mo-status').value;
   const t=getTutar(CY,mi);
   const amount=status==='paid'?t:parseFloat(document.getElementById('mo-amt').value)||0;
-  S.aidatlar[`${CY}_${uid}_${mi}`]={status,amount,date:document.getElementById('mo-date').value,makbuz:document.getElementById('mo-mkbz').value,note:document.getElementById('mo-note').value};
+  const paymethod=document.getElementById('mo-paymethod').value;
+  const date=document.getElementById('mo-date').value;
+  const makbuz=document.getElementById('mo-mkbz').value;
+  const note=document.getElementById('mo-note').value;
+
+  S.aidatlar[`${CY}_${uid}_${mi}`]={status,amount,date,makbuz,note,paymethod};
+
+  // Gelir/gider kaydına ödeme ekle
+  if(status==='paid'||status==='partial') {
+    const existingGG=S.ggk.find(g=>g.aidatRef===`${CY}_${uid}_${mi}`);
+    if(!existingGG) {
+      S.ggk.unshift({
+        id:Date.now(), type:'gelir', date: date||new Date().toISOString().slice(0,10),
+        cat:'Aidat', desc:`${uid} — ${MTR[mi]} ${CY} aidatı (${paymethod==='nakit'?'Nakit':paymethod==='havale'?'Havale/IBAN':'Kart'})`,
+        amount:status==='paid'?t:amount,
+        aidatRef:`${CY}_${uid}_${mi}`
+      });
+    }
+  }
+
   await save(); closeModal('mo-aidat'); rAidat(); rDash();
-  toast('Aidat kaydedildi ✓','ts-s');
+  toast(`${uid} · ${MTR[mi]} ${CY} kaydedildi ✓`,'ts-s');
 }
 
 // ─────────────────────────────────────────────
@@ -2575,20 +2740,25 @@ function rAdmin() {
       <div style="display:flex;align-items:center;gap:9px"><div class="pa">${fmt(p.a)}/ay</div><button class="delbtn" onclick="delPeriod(${p.id})">✕</button></div>
     </div>`).join('')||'<p style="color:var(--t3);font-size:.76rem;margin-bottom:9px">Dönem eklenmemiş.</p>';
 
-  // Units
+  // Units — dönemsel muafiyet destekli
   const units=getUnits();
   document.getElementById('admin-units').innerHTML=units.map(uid=>{
     const u=S.units[uid]||{};
     const n=[u.ad,u.soyad].filter(Boolean).join(' ')||'—';
     const av=u.foto?`<img src="${u.foto}" alt="">`:(uid.startsWith('D')?'🏠':'🏪');
+    const periods=u.exemptPeriods||[];
+    const isGlobalExempt=u.exempt;
+    const exemptBadge=isGlobalExempt
+      ?`<span class="exempt-tag">⚪ Kalıcı Muaf</span>`
+      :periods.length?`<span class="exempt-tag">⚪ ${periods.length} Dönem Muaf</span>`:'';
     return `<div class="ui">
       <div class="uil">
         <div class="uav">${av}</div>
-        <div><div class="un">${uid} — ${n}</div><div class="um">${uid.startsWith('D')?'Daire':'Dükkan'} · ${u.exempt?'<span style="color:var(--purple)">Muaf</span>':'Aktif'}</div></div>
+        <div><div class="un">${uid} — ${n}</div>
+          <div class="um">${uid.startsWith('D')?'Daire':'Dükkan'} · ${isGlobalExempt?'<span style="color:var(--purple)">Kalıcı Muaf</span>':'Aktif'} ${exemptBadge}</div>
+        </div>
       </div>
-      <div class="ets"><span>Muaf</span>
-        <label class="tsw"><input type="checkbox" ${u.exempt?'checked':''} onchange="toggleEx('${uid}',this.checked)"><div class="ttr"></div><div class="tth"></div></label>
-      </div>
+      <button class="btn bsec bsm" onclick="openExemptModal('${uid}')">⚙️ Muafiyet</button>
     </div>`;
   }).join('');
 
@@ -2649,6 +2819,88 @@ function addPeriod() {
 async function delPeriod(id) {
   S.periods=S.periods.filter(p=>p.id!==id);
   await save(); rAdmin(); toast('Dönem silindi','ts-i');
+}
+
+/* Birim belirli ay için muaf mı? (kalıcı veya dönemsel) */
+function isUnitExempt(uid, year, mi) {
+  const u = S.units[uid]||{};
+  if(u.exempt) return true; // kalıcı muaf
+  const ym = `${year}-${String(mi+1).padStart(2,'0')}`;
+  return (u.exemptPeriods||[]).some(p => ym >= p.s && ym <= p.e);
+}
+
+/* calcUnit muafiyet dönemselliğini de hesapla */
+function calcUnit(uid, year) {
+  const u=S.units[uid]||{};
+  if(u.exempt) return {ode:0,bek:0,pct:0,exempt:true};
+  let ode=0,bek=0;
+  for(let i=0;i<12;i++){
+    if(isUnitExempt(uid,year,i)) continue; // dönemsel muaf ise bu ayı atla
+    const t=getTutar(year,i); bek+=t;
+    const a=getAR(year,uid,i);
+    if(a.status==='paid') ode+=t;
+    else if(a.status==='partial') ode+=(a.amount||0);
+  }
+  return {ode,bek,pct:bek>0?Math.round(ode/bek*100):0,exempt:false};
+}
+
+/* Muafiyet Modal */
+function openExemptModal(uid) {
+  const u=S.units[uid]||{};
+  document.getElementById('ex-uid').value=uid;
+  document.getElementById('mo-ex-t').textContent=`${uid} — Muafiyet Yönetimi`;
+  document.getElementById('mo-ex-s').textContent=`${fullName(uid)} için muafiyet ayarları`;
+  document.getElementById('ex-global').checked=!!u.exempt;
+  renderExPeriods(uid);
+  document.getElementById('mo-exempt').classList.add('open');
+}
+
+function renderExPeriods(uid) {
+  const u=S.units[uid]||{};
+  const periods=u.exemptPeriods||[];
+  const list=document.getElementById('ex-periods-list');
+  if(!periods.length){list.innerHTML=`<p style="font-size:.73rem;color:var(--t3)">Dönemsel muafiyet tanımlı değil.</p>`;return;}
+  list.innerHTML=periods.map((p,i)=>`
+    <div class="exempt-period-row">
+      <span class="exempt-tag">⚪</span>
+      <span style="font-size:.78rem;flex:1">${fmr(p.s,p.e)}</span>
+      <span style="font-size:.7rem;color:var(--t3)">${p.s} → ${p.e}</span>
+      <button class="delbtn" onclick="removeExPeriod('${uid}',${i})">✕</button>
+    </div>`).join('');
+}
+
+function addExemptPeriod() {
+  const uid=document.getElementById('ex-uid').value;
+  const s=document.getElementById('ex-start').value;
+  const e=document.getElementById('ex-end').value;
+  if(!s||!e){toast('Başlangıç ve bitiş tarihi seçin!','ts-e');return;}
+  if(s>e){toast('Başlangıç bitiş\'ten büyük olamaz!','ts-e');return;}
+  if(!S.units[uid]) S.units[uid]={};
+  if(!S.units[uid].exemptPeriods) S.units[uid].exemptPeriods=[];
+  S.units[uid].exemptPeriods.push({s,e});
+  document.getElementById('ex-start').value='';
+  document.getElementById('ex-end').value='';
+  renderExPeriods(uid);
+}
+
+function removeExPeriod(uid, idx) {
+  if(!S.units[uid]?.exemptPeriods) return;
+  S.units[uid].exemptPeriods.splice(idx,1);
+  renderExPeriods(uid);
+}
+
+function toggleExGlobal() {
+  const uid=document.getElementById('ex-uid').value;
+  const val=document.getElementById('ex-global').checked;
+  document.getElementById('ex-period-section').style.opacity=val?'.4':'1';
+}
+
+async function saveExemptSettings() {
+  const uid=document.getElementById('ex-uid').value;
+  if(!S.units[uid]) S.units[uid]={};
+  S.units[uid].exempt=document.getElementById('ex-global').checked;
+  await save(); closeModal('mo-exempt'); rAdmin(); rAidat(); rDash();
+  toast(`${uid} muafiyet ayarları kaydedildi ✓`,'ts-s');
 }
 
 async function toggleEx(uid, val) {
@@ -2924,6 +3176,7 @@ function renderResidentDashboard(uid) {
   <div style="display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap">
     <button class="ytab ${resTab==='aidat'?'active':''}" onclick="setResTab('aidat','${uid}',this)" style="border-radius:8px;padding:8px 14px">💳 Ödemelerim</button>
     <button class="ytab ${resTab==='icraatlar'?'active':''}" onclick="setResTab('icraatlar','${uid}',this)" style="border-radius:8px;padding:8px 14px">🔨 Site İcraatları</button>
+    <button class="ytab ${resTab==='galeri'?'active':''}" onclick="setResTab('galeri','${uid}',this)" style="border-radius:8px;padding:8px 14px">🖼 Galeri</button>
     <button class="ytab ${resTab==='mesajlar'?'active':''}" onclick="setResTab('mesajlar','${uid}',this)" style="border-radius:8px;padding:8px 14px">💬 Mesajlarım${hasNewReply?` <span class="msg-badge">${myMsgs.length}</span>`:''}</button>
     <button class="ytab ${resTab==='duyurular'?'active':''}" onclick="setResTab('duyurular','${uid}',this)" style="border-radius:8px;padding:8px 14px">📢 Duyurular</button>
   </div>
@@ -2938,9 +3191,25 @@ function renderResidentDashboard(uid) {
 function renderResTabContent(uid) {
   if(resTab==='aidat') return renderResAidat(uid);
   if(resTab==='icraatlar') return renderResIcraatlar();
+  if(resTab==='galeri') return renderResGaleri();
   if(resTab==='mesajlar') return renderResMesajlar(uid);
   if(resTab==='duyurular') return renderResDuyurular();
   return '';
+}
+
+function renderResGaleri() {
+  const items=(S.galeri||[]).slice().reverse();
+  if(!items.length) return `<div class="res-section"><div class="empty"><div class="ei">🖼</div><p>Henüz galeri fotoğrafı yok</p></div></div>`;
+  let h=`<div class="res-section"><div class="res-section-hdr"><h3>🖼 Site Galerisi</h3></div>
+    <div class="gallery-grid" style="padding:4px 16px 16px">`;
+  items.forEach(g=>{
+    h+=`<div class="gal-item" onclick="openImgPreview('${g.data}','${g.caption||''}')">
+      <img src="${g.data}" alt="${g.caption||''}">
+      <div class="gal-item-overlay"><div class="gal-item-label">${g.caption||''}</div></div>
+    </div>`;
+  });
+  h+=`</div></div>`;
+  return h;
 }
 
 function renderResAidat(uid) {
@@ -3169,8 +3438,88 @@ function renderAnnList() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// İCRAATLAR
+// TEMA YÖNETİMİ
 // ═══════════════════════════════════════════════════════════════
+let isDark = true;
+
+function toggleTheme() {
+  isDark = !isDark;
+  applyTheme();
+  try { localStorage.setItem('kartal-theme', isDark?'dark':'light'); } catch(e){}
+}
+
+function applyTheme() {
+  document.documentElement.setAttribute('data-theme', isDark?'':'light');
+  const label = isDark ? '🌙 Dark' : '☀️ Light';
+  ['theme-toggle-btn','res-theme-btn'].forEach(id=>{
+    const btn=document.getElementById(id);
+    if(btn) btn.innerHTML=label;
+  });
+}
+
+function loadTheme() {
+  try {
+    const saved = localStorage.getItem('kartal-theme');
+    isDark = saved !== 'light';
+  } catch(e) { isDark = true; }
+  applyTheme();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// GALERİ
+// ═══════════════════════════════════════════════════════════════
+function renderGaleri() {
+  if(!S.galeri) S.galeri=[];
+  const total=S.galeri.length;
+  const thisYear=new Date().getFullYear();
+  const recent=S.galeri.filter(g=>g.date?.startsWith(thisYear)).length;
+  document.getElementById('gal-summary').innerHTML=`
+    <div class="sc cb"><div class="sl">Toplam Fotoğraf</div><div class="sv cb">${total}</div><div class="ss">Galeride</div></div>
+    <div class="sc cg"><div class="sl">Bu Yıl</div><div class="sv cg">${recent}</div><div class="ss">${thisYear} yılı</div></div>`;
+
+  if(!total){
+    document.getElementById('gallery-grid').innerHTML=`
+      <div class="gal-add gal-item" onclick="document.getElementById('gal-upload').click()">
+        <div style="font-size:2.5rem">📷</div><div>Fotoğraf eklemek için tıklayın</div>
+      </div>`;
+    return;
+  }
+  document.getElementById('gallery-grid').innerHTML=[...S.galeri].reverse().map((g,i)=>`
+    <div class="gal-item" onclick="openImgPreview('${g.data}','${g.caption||''}')">
+      <img src="${g.data}" alt="${g.caption||''}">
+      <div class="gal-item-overlay">
+        <div class="gal-item-label">${g.caption||''} <span style="color:rgba(255,255,255,.6)">${g.date||''}</span></div>
+      </div>
+      <button onclick="event.stopPropagation();delGalleryPhoto('${g.id}')"
+        style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:.7rem;display:flex;align-items:center;justify-content:center">✕</button>
+    </div>`).join('');
+}
+
+function addGalleryPhotos(input) {
+  if(!S.galeri) S.galeri=[];
+  const files=Array.from(input.files);
+  let processed=0;
+  files.forEach(file=>{
+    if(file.size>2*1024*1024){toast(`${file.name}: 2MB limitini aşıyor, atlandı`,'ts-i');return;}
+    const reader=new FileReader();
+    reader.onload=async e=>{
+      const cap=file.name.replace(/\.[^.]+$/,'').slice(0,40);
+      S.galeri.push({id:String(Date.now()+Math.random()),data:e.target.result,
+        caption:cap, date:new Date().toISOString().slice(0,10)});
+      processed++;
+      if(processed===files.length){
+        await save(); renderGaleri(); toast(`${processed} fotoğraf eklendi ✓`,'ts-s');
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value='';
+}
+
+async function delGalleryPhoto(id) {
+  S.galeri=(S.galeri||[]).filter(g=>g.id!==id);
+  await save(); renderGaleri(); toast('Fotoğraf silindi','ts-i');
+}
 function renderIcraatlar() {
   if(!S.icraatlar) S.icraatlar=[];
   const catF = document.getElementById('ic-filter-cat')?.value||'';
@@ -3493,6 +3842,9 @@ function waitForFirebase(timeout = 8000) {
 }
 
 async function init() {
+  // 0. Tema yükle
+  loadTheme();
+
   // 1. Önce yerel veriden hızlı yükle
   await loadState();
 
