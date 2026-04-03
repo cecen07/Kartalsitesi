@@ -427,6 +427,58 @@ select.fc option{background:var(--s3)}
 .rp-save-btn{background:var(--accent);border:none;border-radius:6px;color:#fff;padding:4px 10px;font-size:.68rem;cursor:pointer;font-weight:600}
 .rp-cancel-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--t2);padding:4px 8px;font-size:.68rem;cursor:pointer}
 .rp-pw-section{background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:14px;margin-top:4px}
+/* ── ARAÇ YÖNETİMİ ── */
+.otopark-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px}
+.plate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.plate-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:box-shadow .18s}
+.plate-card:hover{box-shadow:var(--sh)}
+.plate-card-hdr{padding:12px 14px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.plate-card-av{width:38px;height:38px;border-radius:50%;background:var(--s3);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;overflow:hidden;flex-shrink:0}
+.plate-card-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.plate-card-name{font-size:.82rem;font-weight:700;line-height:1.2}
+.plate-card-uid{font-size:.68rem;color:var(--t3)}
+.plate-slots{padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px}
+.plate-slot{background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:9px 11px;display:flex;align-items:center;gap:8px;min-height:46px}
+.plate-slot.has-plate{border-color:rgba(79,142,247,.3);background:rgba(79,142,247,.06)}
+.plate-slot.empty{border-style:dashed;opacity:.65}
+.plate-num{font-family:monospace;font-size:1rem;font-weight:800;letter-spacing:2px;color:var(--text);flex:1;text-transform:uppercase}
+.plate-num-empty{font-size:.75rem;color:var(--t3);font-style:italic;flex:1}
+.plate-brand{font-size:.68rem;color:var(--t2);white-space:nowrap}
+.plate-slot-label{font-size:.6rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;width:16px;flex-shrink:0}
+.plate-edit-btn{background:none;border:1px solid var(--border);border-radius:5px;color:var(--t3);padding:2px 7px;font-size:.65rem;cursor:pointer;transition:all .15s;white-space:nowrap}
+.plate-edit-btn:hover{border-color:var(--accent);color:var(--accent)}
+/* Plate badge için sakin görünümü */
+.res-plate-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.res-plate-slot{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border)}
+.res-plate-slot:last-child{border-bottom:none}
+.res-plate-num{font-family:monospace;font-size:1.05rem;font-weight:800;letter-spacing:2px;color:var(--accent);flex:1;text-transform:uppercase}
+/* TR Plaka görselleştirme */
+.tr-plate{display:inline-flex;align-items:center;background:#fff;border:2px solid #003399;border-radius:5px;padding:2px 8px 2px 3px;gap:4px;min-height:28px}
+.tr-plate-eu{background:#003399;color:#fc0;font-size:.55rem;font-weight:800;padding:0 3px;border-radius:2px 0 0 2px;text-align:center;letter-spacing:.3px;line-height:1.3;min-width:16px}
+.tr-plate-text{font-family:monospace;font-weight:800;font-size:.85rem;color:#111;letter-spacing:2px}
+/* ── ARAÇ YÖNETİMİ ── */
+.plate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.plate-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:box-shadow .18s}
+.plate-card:hover{box-shadow:var(--sh)}
+.plate-card-hdr{padding:12px 14px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.plate-card-av{width:38px;height:38px;border-radius:50%;background:var(--s3);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;overflow:hidden;flex-shrink:0}
+.plate-card-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.plate-card-name{font-size:.82rem;font-weight:700;line-height:1.2}
+.plate-card-uid{font-size:.68rem;color:var(--t3)}
+.plate-slots{padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px}
+.plate-slot{background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:9px 11px;display:flex;align-items:center;gap:8px;min-height:46px}
+.plate-slot.has-plate{border-color:rgba(79,142,247,.35);background:rgba(79,142,247,.06)}
+.plate-slot.empty{border-style:dashed;opacity:.7}
+.plate-slot-label{font-size:.6rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;width:16px;flex-shrink:0}
+.plate-num-empty{font-size:.75rem;color:var(--t3);font-style:italic;flex:1}
+.plate-edit-btn{background:none;border:1px solid var(--border);border-radius:5px;color:var(--t3);padding:3px 8px;font-size:.65rem;cursor:pointer;white-space:nowrap;transition:all .15s}
+.plate-edit-btn:hover{border-color:var(--accent);color:var(--accent)}
+.res-plate-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.res-plate-slot{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.res-plate-slot:last-child{border-bottom:none}
+.tr-plate{display:inline-flex;align-items:stretch;border:2.5px solid #003399;border-radius:5px;overflow:hidden;vertical-align:middle}
+.tr-plate-eu{background:#003399;color:#fc0;font-size:.52rem;font-weight:800;padding:2px 4px;text-align:center;letter-spacing:.2px;line-height:1.2;display:flex;align-items:center;justify-content:center;min-width:18px}
+.tr-plate-text{background:#fff;font-family:monospace;font-weight:900;font-size:.88rem;color:#111;letter-spacing:2.5px;padding:2px 7px;display:flex;align-items:center}
 /* MOBILE */
 .mob-cards{display:none}
 .muc{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:7px;overflow:hidden}
@@ -581,7 +633,10 @@ select.fc option{background:var(--s3)}
         <div class="fg"><label class="fl">Kullanıcı Adı</label><input class="fc" id="adm-user" placeholder="admin" autocomplete="username"></div>
         <div class="fg"><label class="fl">Şifre</label><input class="fc" type="password" id="adm-pass" placeholder="••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
         <button class="btn bp" style="width:100%;justify-content:center;margin-top:4px" onclick="doAdminLogin()">Giriş Yap →</button>
-        <div class="login-footer">Varsayılan: <code style="background:var(--s3);padding:1px 5px;border-radius:4px">admin</code> / <code style="background:var(--s3);padding:1px 5px;border-radius:4px">1234</code></div>
+        <div class="login-footer" style="display:flex;justify-content:space-between;align-items:center">
+          <span>Varsayılan: <code style="background:var(--s3);padding:1px 5px;border-radius:4px">admin</code> / <code style="background:var(--s3);padding:1px 5px;border-radius:4px">1234</code></span>
+          <button onclick="openResetModal()" style="background:none;border:none;color:var(--accent);font-size:.72rem;cursor:pointer;text-decoration:underline;font-family:inherit;padding:0">Şifremi unuttum</button>
+        </div>
       </div>
       <div id="lt-resident" style="display:none">
         <h2>Sakin Girişi</h2>
@@ -650,6 +705,7 @@ select.fc option{background:var(--s3)}
     <button class="tab-btn active" onclick="switchTab('dashboard',this)"><span>📊</span><span class="tl">Özet</span></button>
     <button class="tab-btn" onclick="switchTab('aidat',this)"><span>💳</span><span class="tl">Aidatlar</span></button>
     <button class="tab-btn" onclick="switchTab('profiller',this)"><span>👤</span><span class="tl">Profiller</span></button>
+    <button class="tab-btn" onclick="switchTab('araclar',this)"><span>🚗</span><span class="tl">Araçlar</span></button>
     <button class="tab-btn" onclick="switchTab('gelir',this)"><span>📈</span><span class="tl">Gelir/Gider</span></button>
     <button class="tab-btn" onclick="switchTab('icraatlar',this)"><span>🔨</span><span class="tl">İcraatlar</span></button>
     <button class="tab-btn" onclick="switchTab('galeri',this)"><span>🖼</span><span class="tl">Galeri</span></button>
@@ -713,6 +769,25 @@ select.fc option{background:var(--s3)}
       </div>
     </div>
     <div class="pgrid" id="pgrid"></div>
+  </div>
+
+  <!-- ARAÇ YÖNETİMİ -->
+  <div id="panel-araclar" class="panel">
+    <div class="sh">
+      <div><div class="st">🚗 Otopark & Araç Yönetimi</div><div class="sub">Dairelere kayıtlı araç plakaları</div></div>
+      <div class="fbar">
+        <select class="fs" id="ar-filter" onchange="renderAraclar()">
+          <option value="">Tüm Birimler</option>
+          <option value="daire">Daireler</option>
+          <option value="dukkan">Dükkanlar</option>
+          <option value="has">Araçlı</option>
+          <option value="empty">Araçsız</option>
+        </select>
+        <input type="text" class="fs" id="ar-search" placeholder="🔍 Plaka ara..." oninput="renderAraclar()" style="min-width:140px">
+      </div>
+    </div>
+    <div class="otopark-summary" id="ar-summary"></div>
+    <div class="plate-grid" id="ar-grid"></div>
   </div>
 
   <!-- GELİR/GİDER -->
@@ -994,6 +1069,17 @@ select.fc option{background:var(--s3)}
           </div>
         </div>
         <button class="btn bp bsm" onclick="saveAdminPw()">💾 Yönetici Şifresini Kaydet</button>
+      </div>
+
+      <!-- Kurtarma Kodu -->
+      <div style="background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:14px;margin-bottom:14px">
+        <div style="font-size:.78rem;font-weight:700;color:var(--t2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">🆘 Şifre Kurtarma Kodu</div>
+        <p style="font-size:.72rem;color:var(--t3);margin-bottom:11px">Şifrenizi unutursanız bu kodu kullanarak giriş ekranından sıfırlayabilirsiniz. Kodu güvenli bir yere not edin.</p>
+        <div id="recovery-code-display" style="margin-bottom:10px"></div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap">
+          <button class="btn bp bsm" onclick="generateRecoveryCode()">🔄 Yeni Kod Oluştur</button>
+          <button class="btn bsec bsm" onclick="copyRecoveryCode()" id="copy-recovery-btn" style="display:none">📋 Kopyala</button>
+        </div>
       </div>
 
       <div style="font-size:.78rem;font-weight:700;color:var(--t2);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">🏠 Sakin Şifreleri</div>
@@ -1338,6 +1424,127 @@ select.fc option{background:var(--s3)}
     <div class="br2">
       <button class="btn bsec" onclick="closeModal('mo-exempt')">Kapat</button>
       <button class="btn bp" onclick="saveExemptSettings()">💾 Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Araç Bilgisi -->
+<div class="mo" id="mo-arac">
+  <div class="md" style="max-width:560px">
+    <div class="mh">
+      <h3 id="mo-ar-t">🚗 Araç Bilgisi</h3>
+      <p id="mo-ar-s">Daire araç bilgilerini düzenle</p>
+    </div>
+    <input type="hidden" id="ar-uid">
+
+    <!-- Araç 1 -->
+    <div style="background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:14px;margin-bottom:12px">
+      <div style="font-size:.72rem;font-weight:700;color:var(--t2);margin-bottom:10px;display:flex;align-items:center;gap:6px">
+        🚘 1. Araç
+        <button onclick="clearAracSlot(1)" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:.65rem;margin-left:auto;text-decoration:underline">Temizle</button>
+      </div>
+      <div class="fg2">
+        <div class="fg">
+          <label class="fl">Plaka</label>
+          <input class="fc" id="ar-p1" placeholder="34 ABC 123" style="font-family:monospace;font-weight:700;letter-spacing:1px" oninput="this.value=this.value.toUpperCase();previewPlate(1)">
+          <div id="ar-prev1" style="margin-top:6px;min-height:22px"></div>
+        </div>
+        <div class="fg">
+          <label class="fl">Marka / Model</label>
+          <input class="fc" id="ar-m1" placeholder="Toyota Corolla">
+        </div>
+      </div>
+      <div class="fg2">
+        <div class="fg"><label class="fl">Renk</label><input class="fc" id="ar-r1" placeholder="Beyaz"></div>
+        <div class="fg"><label class="fl">Durum</label>
+          <select class="fc" id="ar-s1">
+            <option value="aktif">✅ Aktif — Otoparkta</option>
+            <option value="pasif">⏸ Pasif — Otoparkta değil</option>
+            <option value="misafir">👥 Misafir aracı</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Araç 2 -->
+    <div style="background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);padding:14px;margin-bottom:14px">
+      <div style="font-size:.72rem;font-weight:700;color:var(--t2);margin-bottom:10px;display:flex;align-items:center;gap:6px">
+        🚘 2. Araç
+        <button onclick="clearAracSlot(2)" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:.65rem;margin-left:auto;text-decoration:underline">Temizle</button>
+      </div>
+      <div class="fg2">
+        <div class="fg">
+          <label class="fl">Plaka</label>
+          <input class="fc" id="ar-p2" placeholder="34 XYZ 456" style="font-family:monospace;font-weight:700;letter-spacing:1px" oninput="this.value=this.value.toUpperCase();previewPlate(2)">
+          <div id="ar-prev2" style="margin-top:6px;min-height:22px"></div>
+        </div>
+        <div class="fg">
+          <label class="fl">Marka / Model</label>
+          <input class="fc" id="ar-m2" placeholder="Honda Civic">
+        </div>
+      </div>
+      <div class="fg2">
+        <div class="fg"><label class="fl">Renk</label><input class="fc" id="ar-r2" placeholder="Siyah"></div>
+        <div class="fg"><label class="fl">Durum</label>
+          <select class="fc" id="ar-s2">
+            <option value="aktif">✅ Aktif — Otoparkta</option>
+            <option value="pasif">⏸ Pasif — Otoparkta değil</option>
+            <option value="misafir">👥 Misafir aracı</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="br2">
+      <button class="btn bsec" onclick="closeModal('mo-arac')">İptal</button>
+      <button class="btn bp" onclick="saveArac()">💾 Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Şifre Sıfırlama -->
+<div class="mo" id="mo-reset" style="z-index:9100">
+  <div class="md" style="max-width:400px">
+    <div class="mh">
+      <h3>🔑 Şifre Sıfırlama</h3>
+      <p>Kurtarma kodunuzu girerek yönetici şifresini sıfırlayın</p>
+    </div>
+    <!-- Adım 1: Kod girişi -->
+    <div id="reset-step1">
+      <div class="login-err" id="reset-err" style="margin-bottom:12px"></div>
+      <div class="fg">
+        <label class="fl">Kurtarma Kodu</label>
+        <input class="fc" id="reset-code-input" type="text" placeholder="6 haneli kod" maxlength="8"
+          style="font-family:monospace;font-size:1.1rem;letter-spacing:4px;text-align:center;text-transform:uppercase"
+          oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')doResetStep1()">
+        <div style="font-size:.7rem;color:var(--t3);margin-top:5px">Kod Admin paneli → ⚙️ Admin → Güvenlik bölümünden oluşturulur</div>
+      </div>
+      <div class="br2" style="margin-top:16px">
+        <button class="btn bsec" onclick="closeModal('mo-reset')">İptal</button>
+        <button class="btn bp" onclick="doResetStep1()">Devam →</button>
+      </div>
+    </div>
+    <!-- Adım 2: Yeni şifre -->
+    <div id="reset-step2" style="display:none">
+      <div style="background:rgba(62,207,142,.1);border:1px solid var(--green);border-radius:var(--rs);padding:10px 13px;font-size:.78rem;color:var(--green);margin-bottom:14px">✅ Kod doğrulandı. Yeni şifrenizi belirleyin.</div>
+      <div class="fg">
+        <label class="fl">Yeni Kullanıcı Adı</label>
+        <input class="fc" id="reset-new-user" value="admin" placeholder="admin">
+      </div>
+      <div class="fg">
+        <label class="fl">Yeni Şifre</label>
+        <input class="fc" type="password" id="reset-new-pass" placeholder="••••••"
+          oninput="checkPwStrength(this.value,'reset-pw-strength')">
+        <div id="reset-pw-strength" style="margin-top:4px;font-size:.67rem;min-height:15px"></div>
+      </div>
+      <div class="fg">
+        <label class="fl">Şifre Tekrar</label>
+        <input class="fc" type="password" id="reset-new-pass2" placeholder="••••••">
+      </div>
+      <div class="br2" style="margin-top:16px">
+        <button class="btn bsec" onclick="closeModal('mo-reset')">İptal</button>
+        <button class="btn bp" onclick="doResetStep2()">🔒 Şifreyi Güncelle</button>
+      </div>
     </div>
   </div>
 </div>
@@ -2363,8 +2570,8 @@ async function saveIbans() {
 
 
 function ensureUnits() {
-  for (let i=1;i<=S.si.dc;i++) { const id=`D${i}`; if(!S.units[id]) S.units[id]={type:'daire',ad:'',soyad:'',tel:'',email:'',tip:'ev_sahibi',tarih:'',not:'',foto:'',exempt:false,ibans:[]}; }
-  for (let i=1;i<=S.si.sc;i++) { const id=`S${i}`; if(!S.units[id]) S.units[id]={type:'dukkan',ad:'',soyad:'',tel:'',email:'',tip:'ev_sahibi',tarih:'',not:'',foto:'',exempt:false,ibans:[]}; }
+  for (let i=1;i<=S.si.dc;i++) { const id=`D${i}`; if(!S.units[id]) S.units[id]={type:'daire',ad:'',soyad:'',tel:'',email:'',tip:'ev_sahibi',tarih:'',not:'',foto:'',exempt:false,ibans:[],araclar:[]}; }
+  for (let i=1;i<=S.si.sc;i++) { const id=`S${i}`; if(!S.units[id]) S.units[id]={type:'dukkan',ad:'',soyad:'',tel:'',email:'',tip:'ev_sahibi',tarih:'',not:'',foto:'',exempt:false,ibans:[],araclar:[]}; }
 }
 
 // ─────────────────────────────────────────────
@@ -2377,7 +2584,7 @@ function switchTab(name, el) {
   if(p) p.classList.add('active');
   if(el) el.classList.add('active');
   else document.querySelectorAll('.tab-btn').forEach(b=>{ if(b.onclick&&b.onclick.toString().includes(`'${name}'`)) b.classList.add('active'); });
-  const R = {dashboard:rDash, aidat:rAidat, profiller:renderProfiller, gelir:renderGG, istatistik:rIstat, admin:rAdmin, banka:renderBankaPanel, icraatlar:renderIcraatlar, galeri:renderGaleri, fazlalar:renderFazlalar, mesajlar:renderMesajlar};
+  const R = {dashboard:rDash, aidat:rAidat, profiller:renderProfiller, araclar:renderAraclar, gelir:renderGG, istatistik:rIstat, admin:rAdmin, banka:renderBankaPanel, icraatlar:renderIcraatlar, galeri:renderGaleri, fazlalar:renderFazlalar, mesajlar:renderMesajlar};
   if(R[name]) R[name]();
 }
 
@@ -2928,6 +3135,7 @@ function rAdmin() {
   // Admin creds
   const admCreds = S.auth?.admin||{user:'admin'};
   document.getElementById('pw-adm-user').value = admCreds.user||'admin';
+  renderRecoveryCodeStatus();
 
   // DB istatistikleri
   try {
@@ -3706,6 +3914,7 @@ function renderResidentDashboard(uid) {
   <!-- Sakin Sekmeleri -->
   <div style="display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap">
     <button class="ytab ${resTab==='profil'?'active':''}" onclick="setResTab('profil','${uid}',this)" style="border-radius:8px;padding:8px 14px">👤 Profilim</button>
+    <button class="ytab ${resTab==='araclar'?'active':''}" onclick="setResTab('araclar','${uid}',this)" style="border-radius:8px;padding:8px 14px">🚗 Araçlarım</button>
     <button class="ytab ${resTab==='aidat'?'active':''}" onclick="setResTab('aidat','${uid}',this)" style="border-radius:8px;padding:8px 14px">💳 Ödemelerim</button>
     <button class="ytab ${resTab==='icraatlar'?'active':''}" onclick="setResTab('icraatlar','${uid}',this)" style="border-radius:8px;padding:8px 14px">🔨 Site İcraatları</button>
     <button class="ytab ${resTab==='galeri'?'active':''}" onclick="setResTab('galeri','${uid}',this)" style="border-radius:8px;padding:8px 14px">🖼 Galeri</button>
@@ -3740,6 +3949,7 @@ function renderResIbanBanner() {
 
 function renderResTabContent(uid) {
   if(resTab==='profil') return renderResProfil(uid);
+  if(resTab==='araclar') return renderResAraclar(uid);
   if(resTab==='aidat') return renderResAidat(uid);
   if(resTab==='icraatlar') return renderResIcraatlar();
   if(resTab==='galeri') return renderResGaleri();
@@ -4196,6 +4406,101 @@ async function saveAdminPw() {
   await save(); toast('Yönetici şifresi güncellendi ✓','ts-s');
 }
 
+// ─────────────────────────────────────────────
+// ŞİFRE KURTARMA SİSTEMİ
+// ─────────────────────────────────────────────
+const RECOVERY_LS_KEY = 'kartal_recovery_code';
+
+function generateRecoveryCode() {
+  if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code='';
+  for(let i=0;i<8;i++) code+=chars[Math.floor(Math.random()*chars.length)];
+  try{localStorage.setItem(RECOVERY_LS_KEY,code);}catch(e){}
+  _showRecoveryCode(code);
+  toast('Kurtarma kodu oluşturuldu ✓','ts-s');
+}
+
+function _showRecoveryCode(code) {
+  const display=code.slice(0,4)+'-'+code.slice(4);
+  const el=document.getElementById('recovery-code-display');
+  if(el) el.innerHTML=`
+    <div style="background:var(--s2);border:2px solid var(--accent);border-radius:var(--rs);padding:12px 16px;display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span style="font-family:monospace;font-size:1.3rem;font-weight:900;letter-spacing:4px;color:var(--accent)">${display}</span>
+      <span class="sec-badge">Aktif</span>
+    </div>
+    <div style="font-size:.68rem;color:var(--t3);margin-top:6px">⚠️ Bu kodu güvenli bir yere not edin. Yalnızca bu cihazda geçerlidir.</div>`;
+  const btn=document.getElementById('copy-recovery-btn');
+  if(btn){btn.style.display='inline-flex';btn.dataset.code=code;}
+}
+
+function renderRecoveryCodeStatus() {
+  const code=localStorage.getItem(RECOVERY_LS_KEY);
+  const el=document.getElementById('recovery-code-display');
+  if(!el) return;
+  if(code) _showRecoveryCode(code);
+  else el.innerHTML=`<div style="font-size:.75rem;color:var(--t3)">Henüz kod oluşturulmadı. Aşağıdaki butona tıklayın.</div>`;
+}
+
+function copyRecoveryCode() {
+  const btn=document.getElementById('copy-recovery-btn');
+  const code=btn?.dataset?.code||localStorage.getItem(RECOVERY_LS_KEY)||'';
+  if(!code){toast('Önce kod oluşturun!','ts-i');return;}
+  const display=code.slice(0,4)+'-'+code.slice(4);
+  if(navigator.clipboard){navigator.clipboard.writeText(display).then(()=>toast('Kod kopyalandı 📋','ts-s'));}
+  else{const t=document.createElement('textarea');t.value=display;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);toast('Kod kopyalandı 📋','ts-s');}
+}
+
+function openResetModal() {
+  document.getElementById('reset-step1').style.display='';
+  document.getElementById('reset-step2').style.display='none';
+  document.getElementById('reset-code-input').value='';
+  const errEl=document.getElementById('reset-err');
+  errEl.textContent=''; errEl.style.display='none';
+  document.getElementById('mo-reset').classList.add('open');
+  setTimeout(()=>document.getElementById('reset-code-input').focus(),150);
+}
+
+function doResetStep1() {
+  const input=document.getElementById('reset-code-input').value.replace(/-/g,'').toUpperCase().trim();
+  const stored=localStorage.getItem(RECOVERY_LS_KEY)||'';
+  const errEl=document.getElementById('reset-err');
+  if(!stored){
+    errEl.textContent='❌ Bu cihazda kurtarma kodu yok. Admin panelinden oluşturulması gerekir.';
+    errEl.style.display='block'; return;
+  }
+  if(input!==stored){
+    errEl.textContent='❌ Kod hatalı. Lütfen tekrar deneyin.';
+    errEl.style.display='block';
+    document.getElementById('reset-code-input').value=''; return;
+  }
+  errEl.style.display='none';
+  document.getElementById('reset-step1').style.display='none';
+  document.getElementById('reset-step2').style.display='';
+  document.getElementById('reset-new-user').value=S.auth?.admin?.user||'admin';
+  document.getElementById('reset-new-pass').value='';
+  document.getElementById('reset-new-pass2').value='';
+  document.getElementById('reset-pw-strength').innerHTML='';
+}
+
+async function doResetStep2() {
+  const user=validateInput(document.getElementById('reset-new-user').value,'text',50);
+  const pass=document.getElementById('reset-new-pass').value;
+  const pass2=document.getElementById('reset-new-pass2').value;
+  if(!user||!pass){toast('Kullanıcı adı ve şifre boş olamaz!','ts-e');return;}
+  if(pass.length<4){toast('Şifre en az 4 karakter olmalı!','ts-e');return;}
+  if(pass!==pass2){toast('Şifreler eşleşmiyor!','ts-e');return;}
+  if(!S.auth) S.auth={};
+  S.auth.admin={user,pass};
+  await save();
+  try{localStorage.removeItem(RECOVERY_LS_KEY);}catch(e){}
+  closeModal('mo-reset');
+  document.getElementById('adm-user').value=user;
+  document.getElementById('adm-pass').value='';
+  toast('✅ Şifre sıfırlandı! Yeni şifrenizle giriş yapın.','ts-s');
+  setTimeout(()=>document.getElementById('adm-pass').focus(),400);
+}
+
 async function saveUnitPw(uid) {
   if(!currentUser||currentUser.role!=='admin'){toast('⛔ Yetki yok!','ts-e');return;}
   const pw = document.getElementById(`pwf-${uid}`).value;
@@ -4334,6 +4639,180 @@ async function delGalleryPhoto(id) {
   S.galeri=(S.galeri||[]).filter(g=>g.id!==id);
   await save(); renderGaleri(); toast('Fotoğraf silindi','ts-i');
 }
+
+// ═══════════════════════════════════════════════════════════════
+// ARAÇ YÖNETİMİ
+// ═══════════════════════════════════════════════════════════════
+
+function trPlateHtml(plaka) {
+  if(!plaka) return '';
+  const clean = plaka.replace(/\s+/g,' ').trim();
+  const city  = clean.match(/^(\d{1,3})/)?.[1]||'';
+  const rest  = clean.slice(city.length).trim();
+  return `<span class="tr-plate"><span class="tr-plate-eu">TR<br>${esc(city)}</span><span class="tr-plate-text">&nbsp;${esc(rest)}</span></span>`;
+}
+
+function statusBadge(s) {
+  if(s==='pasif')   return '<span style="font-size:.62rem;background:rgba(120,120,140,.15);color:var(--t3);padding:1px 7px;border-radius:20px">⏸ Pasif</span>';
+  if(s==='misafir') return '<span style="font-size:.62rem;background:rgba(247,201,79,.12);color:var(--a2);padding:1px 7px;border-radius:20px">👥 Misafir</span>';
+  return '<span style="font-size:.62rem;background:rgba(62,207,142,.12);color:var(--green);padding:1px 7px;border-radius:20px">✅ Aktif</span>';
+}
+
+function renderAraclar() {
+  if(!currentUser||currentUser.role!=='admin') return;
+  const filter = document.getElementById('ar-filter')?.value||'';
+  const srch   = (document.getElementById('ar-search')?.value||'').toUpperCase().replace(/\s/g,'');
+  const units  = getUnits();
+
+  let total=0, aktif=0, withCar=0;
+  units.forEach(uid=>{
+    const ar=(S.units[uid]?.araclar||[]).filter(a=>a&&a.plaka);
+    if(ar.length){withCar++; total+=ar.length;}
+    aktif+=ar.filter(a=>!a.durum||a.durum==='aktif').length;
+  });
+  const sumEl=document.getElementById('ar-summary');
+  if(sumEl) sumEl.innerHTML=`
+    <div class="sc cb"><div class="sl">Kayıtlı Plaka</div><div class="sv cb">${total}</div><div class="ss">Toplam araç</div></div>
+    <div class="sc cg"><div class="sl">Otoparkta</div><div class="sv cg">${aktif}</div><div class="ss">Aktif araç</div></div>
+    <div class="sc" style="background:var(--s2);border:1px solid var(--border)"><div class="sl">Araçlı Birim</div><div class="sv">${withCar}</div><div class="ss">${units.length} birimden</div></div>
+    <div class="sc" style="background:var(--s2);border:1px solid var(--border)"><div class="sl">Araçsız Birim</div><div class="sv">${units.length-withCar}</div><div class="ss">Kayıt yok</div></div>`;
+
+  let html='';
+  units.forEach(uid=>{
+    const u=S.units[uid]||{};
+    const ar=u.araclar||[];
+    const isD=uid.startsWith('D');
+    if(filter==='daire'&&!isD) return;
+    if(filter==='dukkan'&&isD) return;
+    if(filter==='has'&&!ar.some(a=>a&&a.plaka)) return;
+    if(filter==='empty'&&ar.some(a=>a&&a.plaka)) return;
+    if(srch&&!ar.some(a=>(a.plaka||'').replace(/\s/g,'').toUpperCase().includes(srch))) return;
+
+    const av=u.foto?`<img src="${u.foto}" alt="">`:(isD?'🏠':'🏪');
+
+    const slots=[0,1].map(idx=>{
+      const a=ar[idx]||{};
+      return a.plaka
+        ? `<div class="plate-slot has-plate">
+            <div class="plate-slot-label">${idx+1}</div>
+            <div style="flex:1;min-width:0">
+              <div style="margin-bottom:3px">${trPlateHtml(a.plaka)}</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+                ${a.marka?`<span style="font-size:.68rem;color:var(--t2)">${esc(a.marka)}</span>`:''}
+                ${a.renk?`<span style="font-size:.65rem;color:var(--t3)">· ${esc(a.renk)}</span>`:''}
+                ${statusBadge(a.durum)}
+              </div>
+            </div>
+            <button class="plate-edit-btn" onclick="openAracModal('${uid}')">✏️</button>
+          </div>`
+        : `<div class="plate-slot empty">
+            <div class="plate-slot-label">${idx+1}</div>
+            <div class="plate-num-empty">Boş — araç kaydı yok</div>
+            <button class="plate-edit-btn" onclick="openAracModal('${uid}')">+ Ekle</button>
+          </div>`;
+    }).join('');
+
+    html+=`<div class="plate-card">
+      <div class="plate-card-hdr">
+        <div class="plate-card-av">${av}</div>
+        <div style="flex:1;min-width:0">
+          <div class="plate-card-name">${esc(fullName(uid)||'—')}</div>
+          <div class="plate-card-uid">${uid} · ${isD?'Daire':'Dükkan'}</div>
+        </div>
+        <button class="btn bsec bsm" style="font-size:.68rem" onclick="openAracModal('${uid}')">✏️ Düzenle</button>
+      </div>
+      <div class="plate-slots">${slots}</div>
+    </div>`;
+  });
+
+  const grid=document.getElementById('ar-grid');
+  if(grid) grid.innerHTML=html||`<div class="empty" style="grid-column:1/-1"><div class="ei">🚗</div><p>Kritere uygun birim bulunamadı.</p></div>`;
+}
+
+function previewPlate(slot) {
+  const val=(document.getElementById(`ar-p${slot}`)?.value||'').toUpperCase();
+  const el=document.getElementById(`ar-prev${slot}`);
+  if(el) el.innerHTML=val?trPlateHtml(val):'';
+}
+
+function clearAracSlot(slot) {
+  ['p','m','r'].forEach(f=>{const el=document.getElementById(`ar-${f}${slot}`);if(el)el.value='';});
+  const sel=document.getElementById(`ar-s${slot}`);if(sel)sel.value='aktif';
+  previewPlate(slot);
+}
+
+function openAracModal(uid) {
+  if(!currentUser){toast('⛔ Giriş gerekli!','ts-e');return;}
+  if(currentUser.role==='resident'&&currentUser.uid!==uid){toast('⛔ Yetki yok!','ts-e');return;}
+  const u=S.units[uid]||{};
+  const ar=u.araclar||[];
+  document.getElementById('ar-uid').value=uid;
+  document.getElementById('mo-ar-t').textContent=`🚗 ${uid} — Araç Bilgisi`;
+  document.getElementById('mo-ar-s').textContent=`${fullName(uid)||uid} · En fazla 2 araç kaydedilebilir`;
+  [0,1].forEach(i=>{
+    const a=ar[i]||{};
+    const s=i+1;
+    document.getElementById(`ar-p${s}`).value=a.plaka||'';
+    document.getElementById(`ar-m${s}`).value=a.marka||'';
+    document.getElementById(`ar-r${s}`).value=a.renk||'';
+    document.getElementById(`ar-s${s}`).value=a.durum||'aktif';
+    previewPlate(s);
+  });
+  document.getElementById('mo-arac').classList.add('open');
+}
+
+async function saveArac() {
+  if(!currentUser){toast('⛔ Giriş gerekli!','ts-e');return;}
+  const uid=document.getElementById('ar-uid').value;
+  if(currentUser.role==='resident'&&currentUser.uid!==uid){toast('⛔ Yetki yok!','ts-e');return;}
+  const araclar=[1,2].map(s=>({
+    plaka: validateInput((document.getElementById(`ar-p${s}`)?.value||'').replace(/\s+/g,' ').trim().toUpperCase(),'text',12),
+    marka: validateInput(document.getElementById(`ar-m${s}`)?.value||'','text',50),
+    renk:  validateInput(document.getElementById(`ar-r${s}`)?.value||'','text',30),
+    durum: document.getElementById(`ar-s${s}`)?.value||'aktif',
+  }));
+  if(!S.units[uid]) S.units[uid]={};
+  S.units[uid].araclar=araclar;
+  await save();
+  closeModal('mo-arac');
+  if(currentUser.role==='admin') renderAraclar();
+  else { resTab='araclar'; renderResidentDashboard(uid); }
+  toast('Araç bilgileri kaydedildi ✓','ts-s');
+}
+
+function renderResAraclar(uid) {
+  const u=S.units[uid]||{};
+  const ar=(u.araclar||[]).filter(a=>a&&a.plaka);
+  let h=`<div class="res-section">
+    <div class="res-section-hdr">
+      <h3>🚗 Araçlarım</h3>
+      <button class="btn bp bsm" onclick="openAracModal('${uid}')">✏️ Düzenle</button>
+    </div>`;
+  if(!ar.length){
+    h+=`<div class="empty"><div class="ei">🚗</div><p>Kayıtlı araç yok.<br>Düzenle butonuna basarak ekleyin.</p></div>`;
+  } else {
+    h+=`<div class="res-plate-card" style="margin:0 16px">`;
+    ar.forEach((a,i)=>{
+      const durC=a.durum==='pasif'?'var(--t3)':a.durum==='misafir'?'var(--a2)':'var(--green)';
+      const durT=a.durum==='pasif'?'Pasif':a.durum==='misafir'?'Misafir':'Otoparkta';
+      h+=`<div class="res-plate-slot">
+        <div style="font-size:.62rem;font-weight:700;color:var(--t3);width:18px">${i+1}.</div>
+        <div style="flex:1">
+          <div style="margin-bottom:4px">${trPlateHtml(a.plaka)}</div>
+          ${a.marka?`<div style="font-size:.72rem;color:var(--t2)">${esc(a.marka)}</div>`:''}
+          <div style="font-size:.65rem;margin-top:2px">
+            ${a.renk?`<span style="color:var(--t3)">Renk: ${esc(a.renk)}</span> · `:''}
+            <span style="color:${durC};font-weight:600">${durT}</span>
+          </div>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+  h+=`</div>`;
+  return h;
+}
+
 function renderIcraatlar() {
   if(!S.icraatlar) S.icraatlar=[];
   const catF = document.getElementById('ic-filter-cat')?.value||'';
@@ -4648,6 +5127,13 @@ function showAfterLoad() {
   document.getElementById('resident-view').style.display='none';
   if(_fbMode) updateFbStatus();
   renderLoginIban(); // IBAN bilgisini login ekranında göster
+
+  // Kayıtlı şifre yoksa varsayılan olarak admin/1234 ata
+  if(!S.auth?.admin?.pass) {
+    if(!S.auth) S.auth={};
+    S.auth.admin = {user:'admin', pass:'1234'};
+    save(); // sessizce kaydet
+  }
 }
 
 /* Firebase SDK'nın hazır olmasını bekle (max 8 saniye) */
